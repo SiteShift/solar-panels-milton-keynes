@@ -1,0 +1,94 @@
+---
+// Trust badges and certifications component
+const badges = [
+  {
+    name: 'MCS Certified',
+    logo: '/badges/mcs-logo.svg',
+    alt: 'MCS Certified Solar Installer',
+    url: 'https://mcscertified.com/',
+  },
+  {
+    name: 'RECC',
+    logo: '/badges/recc-logo.svg', 
+    alt: 'RECC Renewable Energy Consumer Code',
+    url: 'https://www.recc.org.uk/',
+  },
+  {
+    name: 'NICEIC',
+    logo: '/badges/niceic-logo.svg',
+    alt: 'NICEIC Approved Contractor',
+    url: 'https://www.niceic.com/',
+  },
+];
+
+const reviews = [
+  {
+    author: 'Sarah Johnson',
+    location: 'Bletchley',
+    rating: 5,
+    text: 'Excellent service from quote to installation. Our 4kW system is performing exactly as promised.',
+    date: '2024-01-15',
+  },
+  {
+    author: 'Mike Thompson', 
+    location: 'Newport Pagnell',
+    rating: 5,
+    text: 'Professional team, clean installation, and great aftercare. Highly recommended.',
+    date: '2024-01-08',
+  },
+];
+---
+
+<div class="bg-neutral-50 border border-neutral-200 rounded-lg p-6">
+  <h3 class="text-lg font-semibold text-neutral-900 mb-4">Trusted & Certified</h3>
+  
+  <!-- Trust Badges -->
+  <div class="flex flex-wrap gap-4 mb-6">
+    {badges.map((badge) => (
+      <a 
+        href={badge.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center space-x-2 bg-white p-3 rounded border hover:shadow-sm transition-shadow"
+      >
+        <img 
+          src={badge.logo} 
+          alt={badge.alt}
+          class="h-8 w-auto"
+          loading="lazy"
+        />
+        <span class="text-sm font-medium text-neutral-700">{badge.name}</span>
+      </a>
+    ))}
+  </div>
+  
+  <!-- Recent Reviews -->
+  <div class="space-y-4">
+    <h4 class="font-medium text-neutral-900">Recent Reviews</h4>
+    {reviews.map((review) => (
+      <div class="bg-white p-4 rounded border">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center space-x-2">
+            <span class="font-medium text-sm text-neutral-900">{review.author}</span>
+            <span class="text-xs text-neutral-500">• {review.location}</span>
+          </div>
+          <div class="flex text-yellow-400">
+            {Array.from({ length: review.rating }, (_, i) => (
+              <svg key={i} class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+        </div>
+        <p class="text-sm text-neutral-600">{review.text}</p>
+        <time class="text-xs text-neutral-400 mt-2 block" datetime={review.date}>
+          {new Date(review.date).toLocaleDateString('en-GB', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}
+        </time>
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,62 @@
+---
+export interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
+  class?: string;
+  onclick?: string;
+  withArrow?: boolean;
+}
+
+const { 
+  href, 
+  type = 'button', 
+  variant = 'primary', 
+  size = 'medium',
+  class: className = '',
+  onclick,
+  withArrow = false
+} = Astro.props;
+
+// Size classes
+const sizeClasses = {
+  small: 'px-6 py-1.5 text-base',
+  medium: 'px-8 py-3 text-base',
+  large: 'px-10 py-4 text-lg'
+};
+
+// Variant classes - using Tailwind gradients for better control
+const variantClasses = {
+  primary: 'bg-gradient-to-b from-green-400 to-green-600 hover:from-green-300 hover:to-green-500 text-black button-3d transition-all duration-300',
+  secondary: 'bg-white text-accent button-3d'
+};
+
+// Base button classes
+const baseClasses = 'inline-flex items-center justify-center font-lufga rounded-full focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2';
+
+const buttonClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+---
+
+<div class="relative group">
+  <div class="absolute inset-0 border border-white/15 rounded-full -m-1 -z-10 transition-colors duration-300 group-hover:border-white/25"></div>
+  {href ? (
+    <a href={href} class={buttonClasses}>
+      <slot />
+      {withArrow && (
+        <div class="ml-3 w-7 h-7 bg-white rounded-full flex items-center justify-center">
+          <img src="/arrow-up (2).svg" alt="" class="w-5 h-5 filter brightness-0 rotate-90 transition-transform duration-500 group-hover:rotate-[450deg]" />
+        </div>
+      )}
+    </a>
+  ) : (
+    <button type={type} class={buttonClasses} onclick={onclick}>
+      <slot />
+      {withArrow && (
+        <div class="ml-3 w-7 h-7 bg-white rounded-full flex items-center justify-center">
+          <img src="/arrow-up (2).svg" alt="" class="w-5 h-5 filter brightness-0 rotate-90 transition-transform duration-500 group-hover:rotate-[450deg]" />
+        </div>
+      )}
+    </button>
+  )}
+</div>
