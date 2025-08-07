@@ -5,7 +5,7 @@ Use this end‑to‑end checklist to build a best‑in‑class, conversion‑foc
 ## 0) Strategy Foundations (Do First)
 - [ ] Define primary entity: “Milton Keynes Solar Panels” (local connector brand) with precise NAP
   - **Name**: Milton Keynes Solar Panels
-  - **Address**: Milton Keynes, Buckinghamshire, UK
+  - **Address**: Milton Keynes, Bletchley, UK
   - **Email**: solarpanelsmiltonkeynes@gmail.com
   - **Service area**: Milton Keynes + 25km
 - [ ] Define primary product/service entity: “Solar Panel Installation in Milton Keynes”
@@ -74,12 +74,62 @@ Use this end‑to‑end checklist to build a best‑in‑class, conversion‑foc
 
 ### 3.4 Local Area Pages (Programmatic SEO — unique local value)
 - [ ] Bletchley — local facts, case studies, irradiance data, nearby installs
-- [ ] Newport Pagnell — same structure, unique photos/data
-- [ ] Stony Stratford — as above
+- [ ] Bradwell — as above
+- [ ] Loughton — as above
+- [ ] Shenley Church End — as above
+- [ ] Newport Pagnell — as above
 - [ ] Wolverton — as above
-- [ ] Woburn Sands — as above
+- [ ] Stony Stratford — as above
 - [ ] Olney — as above
+- [ ] Leighton Buzzard — as above
+- [ ] Woburn Sands — as above
+- [ ] Buckingham — as above
+- [ ] Cranfield — as above
+- [ ] Towcester — as above
+- [ ] Ampthill — as above
+- [ ] Kempston — as above
+- [ ] Bedford — as above
+- [ ] Dunstable — as above
+- [ ] Aylesbury — as above
+- [ ] Winslow — as above
+- [ ] Flitwick — as above
+- [ ] Biggleswade — as above
+- [ ] Wellingborough — as above
+- [ ] Northampton — as above
 - [ ] MK Postcodes index (MK1–MK19) — if helpful and not thin, group smartly
+
+### 3.7 Programmatic SEO Implementation (Town Pages Blueprint)
+- [ ] Data source (single truth): create `data/towns.json` (or `.yaml`) with fields:
+  - `name`, `slug`, `area` ("Milton Keynes"), `coordinates` (lat,lng)
+  - `solarData`: `averageIrradiance` (kWh/m²/yr), `optimalTilt` (°), `optimalOrientation`, `estimatedGeneration` (4kW kWh/yr)
+  - `demographics` (optional): `propertyTypes`, `population` (approx.), `averageHousePrice`
+  - `localInstallers` (optional): name, distance, rating, reviewCount
+  - `nearbyTowns`: 3–6 closest towns for internal linking
+- [ ] Content template fields (unique per town):
+  - Local intro (1–2 paragraphs) with town‑specific angle (roof types, conservation areas, estates)
+  - Mini stats panel: irradiance, payback range, average savings, warranty
+  - Unique case study (if available) or “recent installations nearby” with photos
+  - Grant eligibility note (same rules; make copy concise and link to Grants hub)
+  - CTA blocks (top/mid/bottom) — consistent microcopy
+- [ ] Routing/Slugs (consistent, local-first):
+  - `/milton-keynes/<town>/solar-panels/` (preferred), canonical self‑referencing
+  - Town names kebab‑cased (e.g., `shenley-church-end`)
+- [ ] Page components and schema:
+  - `Place` (`name`, `geo`) + `Service` (`serviceType: Solar Panel Installation`, `areaServed: <town>`)
+  - `BreadcrumbList` (Home → Areas → Town)
+  - `FAQPage` only if visible FAQs exist on page
+- [ ] Internal linking rules (avoid doorway pages):
+  - Each town page links to: Costs (MK), Grants (MK), Process, Calculator, 2–3 related guides
+  - Cross‑link to 3–6 `nearbyTowns` pages
+  - Link up to the Areas hub and down to any relevant case studies
+- [ ] Quality gates (must pass before publishing):
+  - At least 300–600 words of unique local content (no boilerplate cloning)
+  - At least 1 unique visual (photo/map/diagram) or data point per page
+  - No copy/paste of identical paragraphs across towns (rewrite with local specifics)
+  - Readable metadata: unique title/description per town page
+- [ ] Measurement:
+  - Track organic clicks and conversions per town slug (UTM or analytics event labels)
+  - Use Search Console filters by folder (`/milton-keynes/`) for performance insights
 
 ### 3.5 Case Studies (Trust + long‑tail intent)
 - [ ] Case Study Template with measurable outcomes: size, generation, savings, payback, photos, testimonial, map pin
