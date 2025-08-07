@@ -3,15 +3,15 @@
 Use this end‑to‑end checklist to build a best‑in‑class, conversion‑focused site that ranks across all “Solar Panels Milton Keynes” intents in search engines and AI search. Work through sections top‑to‑bottom. Each item is intentionally concrete and testable.
 
 ## 0) Strategy Foundations (Do First)
-- [ ] Define primary entity: “Milton Keynes Solar Guide” (local service brand) with precise NAP
-  - **Name**: Milton Keynes Solar Guide
-  - **Address**: Milton Keynes, Buckinghamshire, UK (exact address if available)
-  - **Phone**: +44 1908 123456
-  - **Email**: hello@solarpanels-miltonkeynes.com
+- [ ] Define primary entity: “Milton Keynes Solar Panels” (local connector brand) with precise NAP
+  - **Name**: Milton Keynes Solar Panels
+  - **Address**: Milton Keynes, Buckinghamshire, UK
+  - **Email**: solarpanelsmiltonkeynes@gmail.com
   - **Service area**: Milton Keynes + 25km
 - [ ] Define primary product/service entity: “Solar Panel Installation in Milton Keynes”
-- [ ] Define business model: Free quotes; objective is form submissions
-- [ ] Define measurement: form submissions as primary conversion, quote CTA clicks as micro‑conversions
+- [ ] Define business model: Connect locals with vetted MCS‑certified installers; primary objective is quote form submissions
+- [ ] Define measurement: form submissions as primary conversion; quote CTA clicks as micro‑conversions
+- [ ] Primary objective: dominate SEO for Milton Keynes solar intents across search and AI experiences
 - [ ] Create brand tone: factual, friendly, expert, local
 
 ## 1) Technical SEO Baseline
@@ -102,11 +102,11 @@ Use this end‑to‑end checklist to build a best‑in‑class, conversion‑foc
 - [ ] Outbound citations for claims (Ofgem, MCS, MK Council)
 
 ## 5) Entity SEO & Structured Data
-- [ ] Global `Organization` and `LocalBusiness` JSON‑LD (id‑linked, consistent NAP)
+- [ ] Global `Organization` JSON‑LD (id‑linked, consistent NAP). Use `LocalBusiness` only if/when eligible as a true service‑area business; otherwise use `Service` with `areaServed`.
 - [ ] `Service` schema for Solar Panel Installation (priceRange, areaServed)
 - [ ] `FAQPage` for FAQ sections (only where visible on page)
 - [ ] `Article`/`BlogPosting` for guides with author, datePublished, dateModified
-- [ ] `Person` for each author with credentials and sameAs profiles (LinkedIn)
+- [ ] `Person` for Emily Harris with credentials and sameAs (LinkedIn). Use the provided optimized bio.
 - [ ] `BreadcrumbList` on all inner pages
 - [ ] `AggregateRating` + `Review` if you have real, verifiable review data
 - [ ] `WebSite` with `SearchAction` (site search if applicable)
@@ -122,6 +122,11 @@ Use this end‑to‑end checklist to build a best‑in‑class, conversion‑foc
 - [ ] Legal pages: Privacy, Terms, Cookies; link in footer and near forms
 - [ ] Real photos (team, installs), not just stock; EXIF/location if appropriate
 - [ ] Trust badges (MCS/RECC/NICEIC) visible above the fold on money pages
+
+### Author Bio (Emily Harris — required copy to use site‑wide)
+Use this bio verbatim across author boxes, About, and `Person` schema:
+
+“Emily Harris is a Milton Keynes–based solar energy specialist with 8+ years of hands‑on experience advising homeowners on solar PV system design, battery storage sizing, and UK grant eligibility. Emily founded Milton Keynes Solar Panels to help local residents quickly connect with vetted, MCS‑certified installers who deliver high‑quality workmanship and reliable aftercare. She reviews every guide for technical accuracy, keeps pricing and grant information up to date, and champions transparent, data‑driven decisions so homeowners can confidently cut their energy bills and carbon footprint.”
 
 ## 7) Local SEO & Google Business Profile (GBP)
 - [ ] GBP fully completed: categories (Solar energy company), services, service area
