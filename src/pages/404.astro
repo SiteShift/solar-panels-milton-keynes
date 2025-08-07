@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+const title = 'Page not found | Solar Panels Milton Keynes';
+const description = 'This page could not be found. Explore solar panel costs, grants, and installation in Milton Keynes or get a free quote.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="min-h-[70vh] flex items-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-lufga text-text-dark mb-4">404</h1>
+      <p class="text-lg text-text-light mb-8">We couldn’t find that page. Try one of these helpful options:</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href="/" size="large" withArrow={true}>Go to Homepage</Button>
+        <Button href="#quote" variant="secondary" size="large">Get Free Quote</Button>
+      </div>
+      <div class="mt-10 grid sm:grid-cols-2 gap-4">
+        <a class="block p-6 rounded-xl border border-border-gray hover:border-accent/50 transition-colors" href="/">
+          <h3 class="font-lufga text-text-dark mb-2">Solar Panels in Milton Keynes</h3>
+          <p class="text-sm text-text-light">Start with benefits, process, and savings.</p>
+        </a>
+        <a class="block p-6 rounded-xl border border-border-gray hover:border-accent/50 transition-colors" href="#calculator">
+          <h3 class="font-lufga text-text-dark mb-2">Savings Calculator</h3>
+          <p class="text-sm text-text-light">Estimate annual savings and payback.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

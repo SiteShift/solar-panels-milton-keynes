@@ -3,16 +3,16 @@
 Use this end‑to‑end checklist to build a best‑in‑class, conversion‑focused site that ranks across all “Solar Panels Milton Keynes” intents in search engines and AI search. Work through sections top‑to‑bottom. Each item is intentionally concrete and testable.
 
 ## 0) Strategy Foundations (Do First)
-- [ ] Define primary entity: “Milton Keynes Solar Panels” (local connector brand) with precise NAP
+- [x] Define primary entity: “Milton Keynes Solar Panels” (local connector brand) with precise NAP
   - **Name**: Milton Keynes Solar Panels
   - **Address**: Milton Keynes, Bletchley, UK
   - **Email**: solarpanelsmiltonkeynes@gmail.com
   - **Service area**: Milton Keynes + 25km
-- [ ] Define primary product/service entity: “Solar Panel Installation in Milton Keynes”
-- [ ] Define business model: Connect locals with vetted MCS‑certified installers; primary objective is quote form submissions
-- [ ] Define measurement: form submissions as primary conversion; quote CTA clicks as micro‑conversions
-- [ ] Primary objective: dominate SEO for Milton Keynes solar intents across search and AI experiences
-- [ ] Create brand tone: factual, friendly, expert, local
+- [x] Define primary product/service entity: “Solar Panel Installation in Milton Keynes”
+- [x] Define business model: Connect locals with vetted MCS‑certified installers; primary objective is quote form submissions
+- [x] Define measurement: form submissions as primary conversion; quote CTA clicks as micro‑conversions
+- [x] Primary objective: dominate SEO for Milton Keynes solar intents across search and AI experiences
+- [x] Create brand tone: factual, friendly, expert, local
 
 ## 1) Technical SEO Baseline
 - [ ] Pages render server‑side; critical content indexable without JS

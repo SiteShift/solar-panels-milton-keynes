@@ -45,6 +45,10 @@ import Footer from '../components/Footer.astro';
     {structuredData && (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     )}
+
+    {Astro.url.pathname === '/' && (
+      <link rel="preload" as="image" href="/Solar Panels Milton Keynes (1).webp" imagesrcset="/Solar Panels Milton Keynes (1).webp" imagesizes="100vw" fetchpriority="high" />
+    )}
     
     <!-- Local font used; no external font preconnects needed -->
     
