@@ -1,0 +1,91 @@
+---
+// Footer component: elegant, accessible, responsive
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-neutral-900 text-neutral-200" aria-labelledby="footer-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h2 id="footer-title" class="sr-only">Site footer</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="inline-flex items-center space-x-3">
+          <img src="/Solar Panels Milton Keynes logo-cropped (1).svg" alt="Solar Panels Milton Keynes" class="h-10 w-auto" width="160" height="40" />
+        </a>
+        <p class="mt-4 text-neutral-400 leading-relaxed">
+          MCS-certified solar panel installers helping Milton Keynes homes cut energy bills by up to 70%.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-300 text-xs">MCS Certified</span>
+          <span class="px-3 py-1 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-300 text-xs">RECC Member</span>
+          <span class="px-3 py-1 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-300 text-xs">NICEIC Approved</span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav aria-label="Footer navigation" class="grid grid-cols-2 gap-8 md:col-span-2">
+        <div>
+          <h3 class="text-neutral-100 font-semibold mb-4">Company</h3>
+          <ul class="space-y-3 text-neutral-400">
+            <li><a class="hover:text-white transition-colors" href="/about">About</a></li>
+            <li><a class="hover:text-white transition-colors" href="/services">Services</a></li>
+            <li><a class="hover:text-white transition-colors" href="/installers">Installers</a></li>
+            <li><a class="hover:text-white transition-colors" href="/blog">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-neutral-100 font-semibold mb-4">Resources</h3>
+          <ul class="space-y-3 text-neutral-400">
+            <li><a class="hover:text-white transition-colors" href="#calculator">Savings Calculator</a></li>
+            <li><a class="hover:text-white transition-colors" href="#quote">Free Quote</a></li>
+            <li><a class="hover:text-white transition-colors" href="/guides/solar-grants-2025">Solar Grants 2025</a></li>
+            <li><a class="hover:text-white transition-colors" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-neutral-100 font-semibold mb-4">Contact</h3>
+        <address class="not-italic text-neutral-400 space-y-3">
+          <p>Milton Keynes, Buckinghamshire</p>
+          <p>
+            <a class="hover:text-white transition-colors" href="tel:+441908123456">+44 1908 123456</a><br />
+            <a class="hover:text-white transition-colors" href="mailto:hello@solarpanels-miltonkeynes.com">hello@solarpanels-miltonkeynes.com</a>
+          </p>
+          <p class="text-xs text-neutral-500">Mon–Fri 9:00–17:30</p>
+        </address>
+        <div class="mt-6 flex items-center gap-3" aria-label="Social links">
+          <a href="https://www.facebook.com/mksolarpanels" aria-label="Facebook" target="_blank" rel="noopener" class="p-2 rounded-full bg-neutral-800 hover:bg-neutral-700 transition-colors">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 5.02 3.66 9.19 8.44 9.98v-7.06H7.9v-2.92h2.42V9.41c0-2.4 1.43-3.72 3.62-3.72 1.05 0 2.14.19 2.14.19v2.36h-1.2c-1.18 0-1.55.73-1.55 1.48v1.78h2.64l-.42 2.92h-2.22v7.06c4.78-.79 8.44-4.96 8.44-9.98Z"/></svg>
+          </a>
+          <a href="https://twitter.com/mksolarpanels" aria-label="Twitter" target="_blank" rel="noopener" class="p-2 rounded-full bg-neutral-800 hover:bg-neutral-700 transition-colors">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.633 7.997c.013.177.013.355.013.533 0 5.431-4.134 11.692-11.692 11.692-2.325 0-4.482-.679-6.297-1.847.33.038.647.05.99.05a8.27 8.27 0 0 0 5.124-1.762 4.139 4.139 0 0 1-3.862-2.868c.254.038.508.063.775.063.368 0 .736-.05 1.079-.14a4.132 4.132 0 0 1-3.312-4.056v-.05c.546.304 1.178.49 1.85.514a4.126 4.126 0 0 1-1.843-3.43c0-.763.203-1.46.558-2.07a11.75 11.75 0 0 0 8.528 4.32 4.665 4.665 0 0 1-.102-.947 4.13 4.13 0 0 1 7.146-2.827 8.17 8.17 0 0 0 2.623-1 4.138 4.138 0 0 1-1.815 2.283 8.254 8.254 0 0 0 2.376-.635 8.89 8.89 0 0 1-2.065 2.135Z"/></svg>
+          </a>
+        </div>
+        <div class="mt-6">
+          <a href="#quote" class="inline-flex items-center gap-3 bg-gradient-to-b from-green-400 to-green-600 text-black rounded-full px-5 py-3 button-3d">
+            Get Free Quote
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white">
+              <svg class="w-4 h-4 text-black" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-neutral-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-neutral-500">© {year} Solar Panels Milton Keynes. All rights reserved.</p>
+      <div class="flex items-center gap-6 text-sm">
+        <a class="text-neutral-400 hover:text-white transition-colors" href="/privacy">Privacy</a>
+        <a class="text-neutral-400 hover:text-white transition-colors" href="/terms">Terms</a>
+        <a class="text-neutral-400 hover:text-white transition-colors" href="/sitemap-index.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
