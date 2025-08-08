@@ -1,0 +1,17 @@
+---
+export interface Props { links: Array<{ href: string; label: string }>; }
+const { links = [] } = Astro.props as Props;
+---
+
+{links.length > 0 && (
+  <aside class="mt-10 p-6 rounded-xl border border-gray-200 bg-white">
+    <h2 class="text-xl font-lufga text-text-dark mb-3">Related reading</h2>
+    <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+      {links.map((l) => (
+        <li><a class="text-accent hover:underline" href={l.href}>{l.label}</a></li>
+      ))}
+    </ul>
+  </aside>
+)}
+
+

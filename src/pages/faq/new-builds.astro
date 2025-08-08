@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Can I add solar to a new build?';
+const description = 'New builds in Milton Keynes: developer permissions, roof loadings, and wiring provisions for solar.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Can I add solar to a new build?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Check developer warranties and planning conditions. Many new builds are pre-wired; ensure structural fixings and DNO notification as standard.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Can I add solar to a new build?</h1>
+      <p class="text-neutral-700">Yes. Coordinate with your developer on roof fixings and penetrations, and keep paperwork for Building Control and future sale packs.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

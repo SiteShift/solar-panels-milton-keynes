@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Do I need 3‑phase for larger systems?';
+const description = 'When MK homes need 3‑phase supply or G99 for higher power systems.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Do I need 3‑phase for larger systems?', acceptedAnswer: { '@type': 'Answer', text: 'Most MK homes are single‑phase and fine up to common sizes; export is typically limited to 3.68kW unless approved. Very large arrays or high export targets may require 3‑phase and G99 approval.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Do I need 3‑phase for larger systems?</h1>
+      <p class="text-neutral-700">Single‑phase is standard. For higher export or big PV+battery setups, 3‑phase and DNO approvals may be required—we’ll advise during design.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

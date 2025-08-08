@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Best Solar Panel Brands | Milton Keynes';
+const description = 'Overview of reputable solar panel brands (JA, Trina, Longi, REC, SunPower) and what to look for in MK.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Best Solar Panel Brands" subtitle="JA, Trina, Longi, REC, SunPower — what to look for in MK" label="Brands" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Best Solar Panel Brands</h1>
+      <div class="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20">
+        <h2 class="text-lg font-lufga text-text-dark mb-2">TL;DR</h2>
+        <ul class="list-disc pl-6 text-neutral-800 space-y-1">
+          <li>All listed brands are reputable; differences are efficiency, warranty, local support.</li>
+          <li>Prioritise 25‑year performance warranty and UK service presence.</li>
+          <li>Installer experience with your chosen brand matters as much as the logo.</li>
+        </ul>
+      </div>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Brands to consider</h2>
+      <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+        <li>JA, Trina, Longi — strong value/efficiency, broad installer familiarity.</li>
+        <li>REC — premium build, excellent degradation rates, robust warranties.</li>
+        <li>SunPower — top‑tier efficiency and warranty; higher price point.</li>
+      </ul>
+      <p class="text-neutral-700 mt-4">Match panel selection to roof area, budget, and aesthetics. For compact roofs, higher‑efficiency options can preserve output with fewer modules.</p>
+      <div class="mt-8"><AuthorBox /></div>
+      <RelatedLinks links={[
+        { href: '/panel-types', label: 'Panel types & efficiency' },
+        { href: '/costs', label: 'Costs & payback in Milton Keynes' },
+        { href: '/installation', label: 'Installation process' },
+        { href: '/faq/panel-lifespan', label: 'FAQ: How long do panels last?' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = 'Review Policy | Milton Keynes Solar Panels';
+const description = 'How we collect, verify, and present reviews and testimonials.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Review Policy</h1>
+      <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+        <li>We only publish genuine reviews from homeowners who received quotes or installations.</li>
+        <li>Where possible, we request screenshots or documentation to verify authenticity.</li>
+        <li>We do not offer incentives for positive reviews.</li>
+        <li>We remove reviews proven fraudulent or inaccurate.</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+

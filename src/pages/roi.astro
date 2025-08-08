@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Solar ROI & Payback | Milton Keynes';
+const description = 'How to think about solar ROI in Milton Keynes: savings, SEG, battery impact, and assumptions.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Solar ROI & Payback" subtitle="How to think about ROI in Milton Keynes: savings, SEG, battery impact, and assumptions." label="ROI" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Solar ROI & Payback</h1>
+      <p class="text-neutral-700 mb-4">ROI depends on usage, import rates, generation, SEG, and battery strategy. Typical Milton Keynes payback falls around 8–12 years, with faster outcomes for higher daytime usage and smart battery/time‑of‑use tariff strategies.</p>
+
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">MK generation & seasonality</h2>
+      <p class="text-neutral-700 mb-3">Based on local studies, a typical MK household sees ~4,751 kWh annual solar generation from well‑sited systems. Seasonal output per kW installed:</p>
+      <table class="w-full text-sm mb-6">
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th class="text-left py-2">Season</th>
+            <th class="text-left py-2">kWh/day per kW</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-700">
+          <tr class="border-b border-gray-100"><td class="py-2">Summer</td><td class="py-2">~5.15</td></tr>
+          <tr class="border-b border-gray-100"><td class="py-2">Spring</td><td class="py-2">~4.29</td></tr>
+          <tr class="border-b border-gray-100"><td class="py-2">Autumn</td><td class="py-2">~2.24</td></tr>
+          <tr><td class="py-2">Winter</td><td class="py-2">~1.08</td></tr>
+        </tbody>
+      </table>
+      <p class="text-neutral-700 mb-6">Orientation and shading strongly influence these figures. South‑facing at 30–40° tilt is optimal; east/west arrays remain strong in MK’s climate.</p>
+
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Assumptions that move payback</h2>
+      <ul class="list-disc pl-6 text-neutral-700 mb-6">
+        <li>Installed cost (0% VAT until April 2027), system size, and roof access</li>
+        <li>Import tariff vs. time‑of‑use strategy; SEG export rate (typically 1–6p/kWh)</li>
+        <li>Daytime self‑consumption share; battery sizing and cycle strategy</li>
+      </ul>
+
+      <div class="mt-8 p-4 rounded-xl border border-gray-200 bg-white">
+        <h3 class="font-lufga text-text-dark mb-2">Sources</h3>
+        <ul class="list-disc pl-6 text-neutral-700 text-sm space-y-1">
+          <li>Local MK solar research (installations, capacity, generation)</li>
+          <li>Ofgem (SEG and energy price guidance)</li>
+          <li>Milton Keynes Council (planning/building regs context)</li>
+        </ul>
+      </div>
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+      <RelatedLinks links={[
+        { href: '/costs', label: 'Costs & payback in Milton Keynes' },
+        { href: '/calculator', label: 'Savings calculator' },
+        { href: '/battery-storage', label: 'Battery storage guide' },
+        { href: '/faq/tariffs', label: 'FAQ: Which tariffs work with solar?' },
+        { href: '/faq/roi', label: 'FAQ: How do you calculate ROI/payback?' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

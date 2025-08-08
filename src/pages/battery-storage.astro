@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+const title = 'Solar Battery Storage | Milton Keynes';
+const description = 'When battery storage makes sense in Milton Keynes, typical sizes, brands, and warranty considerations.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Emily Harris',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Solar Battery Storage" subtitle="When battery makes sense in MK; typical sizes, brands, and warranties" label="Battery" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Solar Battery Storage</h1>
+      <p class="text-neutral-700 mb-6">Right‑sized batteries increase self‑consumption, reduce export, and enable off‑peak charging. We’ll help you decide whether a 5–10kWh battery is worth it for your usage.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">What to consider</h2>
+      <ul class="list-disc pl-6 space-y-2 text-neutral-700">
+        <li>Daily usage and export potential</li>
+        <li>Tariffs and SEG interaction</li>
+        <li>Warranty length and cycle life</li>
+        <li>Compatible inverter/brand ecosystem</li>
+      </ul>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h3 class="text-xl font-lufga text-text-dark mb-2">Pros</h3>
+          <ul class="list-disc pl-6 space-y-1 text-neutral-700 text-sm">
+            <li>Higher self‑consumption; lower imports</li>
+            <li>Night‑time use and backup potential</li>
+            <li>Better ROI with time‑of‑use tariffs</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h3 class="text-xl font-lufga text-text-dark mb-2">Cons</h3>
+          <ul class="list-disc pl-6 space-y-1 text-neutral-700 text-sm">
+            <li>Higher up‑front cost</li>
+            <li>Degradation over cycles; warranty limits</li>
+            <li>Space and install complexity</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+      <RelatedLinks links={[
+        { href: '/costs', label: 'Costs & payback in Milton Keynes' },
+        { href: '/seg', label: 'Smart Export Guarantee (SEG)' },
+        { href: '/calculator', label: 'Estimate your savings' },
+        { href: '/faq/ev-battery', label: 'FAQ: Do EV owners benefit more from a battery?' },
+        { href: '/faq/tariffs', label: 'FAQ: Which tariffs work with solar & batteries?' },
+        { href: '/faq/power-cuts', label: 'FAQ: Will solar work in a power cut?' },
+        { href: '/faq/add-battery-later', label: 'FAQ: Can I add a battery later?' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

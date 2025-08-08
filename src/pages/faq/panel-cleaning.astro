@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Do solar panels need cleaning?';
+const description = 'Panel cleaning in Milton Keynes: when to clean, how much it helps, and safety considerations.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Do solar panels need cleaning?', acceptedAnswer: { '@type': 'Answer', text: 'Usually rain is enough for pitched roofs. In dusty or tree-heavy areas, an annual clean may recover 2–5% yield. Avoid walking on panels; use professionals for safety.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Do solar panels need cleaning?</h1>
+      <p class="text-neutral-700">Rain cleans most pitched arrays. If you notice debris or drops in output, consider a safe, professional clean—especially near trees or after pollen seasons.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

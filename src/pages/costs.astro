@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+
+const title = 'Solar Panel Costs & Payback in Milton Keynes';
+const description = 'Transparent solar panel pricing in Milton Keynes with payback examples, assumptions, and a savings calculator link.';
+const updated = new Date();
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: updated.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Emily Harris',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Solar Panel Costs & Payback (Milton Keynes)" subtitle="Transparent pricing, assumptions, and a savings calculator" label="Costs & payback" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Solar Panel Costs & Payback in Milton Keynes</h1>
+      <div class="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20">
+        <h2 class="text-lg font-lufga text-text-dark mb-2">TL;DR</h2>
+        <ul class="list-disc pl-6 text-neutral-800 space-y-1">
+          <li>Typical installed costs (MK): 3kW £5–6k • 4kW £6–8k • 5kW £8–9k • 6kW £9–11k (0% VAT applies)</li>
+          <li>Payback often ~8–12 years depending on usage, tariffs, and SEG</li>
+          <li>Use the calculator to personalise savings; check ECO4 and 0% VAT eligibility</li>
+        </ul>
+      </div>
+      <p class="text-neutral-700 mb-8">Typical MK pricing includes equipment, installation, scaffolding, and VAT. Actual costs vary by roof, access, and chosen brands. Use our calculator to estimate payback based on your bills and export earnings.</p>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-2xl font-lufga text-text-dark mb-4">System Sizes & Prices</h2>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th scope="col" class="text-left py-3 font-lufga text-text-dark">System Size</th>
+                  <th scope="col" class="text-left py-3 font-lufga text-text-dark">Installed Cost (MK)</th>
+                  <th scope="col" class="text-left py-3 font-lufga text-text-dark">Annual Savings (typical)</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-700">
+                <tr class="border-b border-gray-100">
+                  <td class="py-3">3kW (6–8 panels)</td>
+                  <td class="py-3 font-semibold">£5,000–£6,000</td>
+                  <td class="py-3 text-accent font-semibold">£450–£600</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-3">4kW (8–10 panels)</td>
+                  <td class="py-3 font-semibold">£6,000–£8,000</td>
+                  <td class="py-3 text-accent font-semibold">£600–£800</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-3">5kW (10–12 panels)</td>
+                  <td class="py-3 font-semibold">£8,000–£9,000</td>
+                  <td class="py-3 text-accent font-semibold">£750–£1,000</td>
+                </tr>
+                <tr>
+                  <td class="py-3">6kW (12–15 panels)</td>
+                  <td class="py-3 font-semibold">£9,000–£11,000</td>
+                  <td class="py-3 text-accent font-semibold">£900–£1,200</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-neutral-500 mt-3">Assumptions: typical MK usage patterns, south‑facing roof, no severe shading. Prices include installation; 0% VAT applies to domestic solar and batteries until April 2027.</p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-lufga text-text-dark mb-4">Payback Examples</h2>
+          <div class="bg-white rounded-xl p-6 border border-gray-200 space-y-3">
+            <div class="flex justify-between text-neutral-700"><span>Average system cost</span><span class="font-lufga">£6,500</span></div>
+            <div class="flex justify-between text-neutral-700"><span>Annual bill savings</span><span class="font-lufga text-accent">£950</span></div>
+            <div class="flex justify-between text-neutral-700"><span>SEG export earnings</span><span class="font-lufga text-accent">£180</span></div>
+            <hr class="border-gray-200" />
+            <div class="flex justify-between text-neutral-900"><span>Total annual benefit</span><span class="font-lufga text-accent text-xl">£1,130</span></div>
+            <div class="flex justify-between text-neutral-900"><span>Payback period</span><span class="font-lufga text-accent text-xl">~5.8 years</span></div>
+            <div class="pt-4">
+              <Button href="/calculator" class="w-full">Open Savings Calculator</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Pros & Cons</h2>
+          <div class="grid sm:grid-cols-2 gap-4 text-neutral-700 text-sm">
+            <div>
+              <h3 class="font-semibold mb-1">Pros</h3>
+              <ul class="list-disc pl-5 space-y-1">
+                <li>Lower electricity bills from day one</li>
+                <li>SEG income for exported energy</li>
+                <li>25‑year performance warranties</li>
+                <li>Improved EPC and property value</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Cons</h3>
+              <ul class="list-disc pl-5 space-y-1">
+                    <li>Up‑front cost; payback depends on usage</li>
+                <li>Shading/roof constraints can reduce output</li>
+                <li>Inverter replacement typically ~10–12 years</li>
+                <li>Scaffolding/access may add costs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Which System Size?</h2>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="text-left py-2">Size</th>
+                <th class="text-left py-2">Best for</th>
+                <th class="text-left py-2">Notes</th>
+              </tr>
+            </thead>
+            <tbody class="text-neutral-700">
+              <tr class="border-b border-gray-100">
+                <td class="py-2">3–4kW</td>
+                <td class="py-2">Small–medium homes (£80–£150 monthly bills)</td>
+                <td class="py-2">Fast payback; minimal roof area</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-2">5–6kW</td>
+                <td class="py-2">Family homes (£150–£220 bills)</td>
+                <td class="py-2">Great with battery for evening use</td>
+              </tr>
+              <tr>
+                <td class="py-2">7–8kW</td>
+                <td class="py-2">Larger homes (£220+ bills)</td>
+                <td class="py-2">Check DNO/export limits; more roof area</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <a href="/grants" class="block p-6 rounded-xl border border-gray-200 hover:border-accent/50 transition-colors bg-white">
+          <h3 class="font-lufga text-text-dark mb-1">Grants & Incentives</h3>
+          <p class="text-sm text-neutral-700">ECO4, 0% VAT, and SEG can lower costs and improve ROI.</p>
+        </a>
+        <a href="/battery-storage" class="block p-6 rounded-xl border border-gray-200 hover:border-accent/50 transition-colors bg-white">
+          <h3 class="font-lufga text-text-dark mb-1">Battery Storage</h3>
+          <p class="text-sm text-neutral-700">Boost self‑consumption and night‑time use for faster payback.</p>
+        </a>
+        <a href="/planning-permission" class="block p-6 rounded-xl border border-gray-200 hover:border-accent/50 transition-colors bg-white">
+          <h3 class="font-lufga text-text-dark mb-1">Planning Permission</h3>
+          <p class="text-sm text-neutral-700">Most installs are permitted development; see MK specifics.</p>
+        </a>
+      </div>
+
+      <div class="mt-10 p-6 rounded-xl border border-gray-200 bg-white">
+        <h2 class="text-xl font-lufga text-text-dark mb-2">Sources</h2>
+        <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+          <li><a class="text-accent hover:underline" href="https://www.ofgem.gov.uk" target="_blank" rel="noopener">Ofgem — energy prices and SEG</a></li>
+          <li><a class="text-accent hover:underline" href="https://mcscertified.com/" target="_blank" rel="noopener">MCS — certification and standards</a></li>
+          <li><a class="text-accent hover:underline" href="https://www.milton-keynes.gov.uk/" target="_blank" rel="noopener">Milton Keynes Council — planning guidance</a></li>
+          <li><a class="text-accent hover:underline" href="https://www.gov.uk/energy-company-obligation" target="_blank" rel="noopener">GOV.UK — ECO4 scheme</a></li>
+        </ul>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="text-sm text-neutral-500">Last updated: {updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
+        <a href="/contact" class="inline-flex items-center gap-3 bg-gradient-to-b from-green-400 to-green-600 text-black rounded-full px-6 py-3 button-3d">Get Free Quote</a>
+      </div>
+
+      <AuthorBox />
+      <RelatedLinks links={[
+        { href: '/grants', label: 'Solar grants in Milton Keynes (ECO4, 0% VAT, SEG)' },
+        { href: '/battery-storage', label: 'Should you add a battery?' },
+        { href: '/calculator', label: 'Estimate your savings and payback' },
+        { href: '/faq/tariffs', label: 'FAQ: Which tariffs work best with solar?' },
+        { href: '/faq/roi', label: 'FAQ: How do you calculate ROI/payback?' },
+        { href: '/faq/panel-lifespan', label: 'FAQ: How long do panels last?' },
+        { href: '/faq/scaffolding', label: 'FAQ: Do you always need scaffolding?' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

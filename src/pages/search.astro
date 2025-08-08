@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import pages from '../data/pages.json';
+import towns from '../data/towns.json';
+
+const title = 'Search | Milton Keynes Solar Panels';
+const description = 'Search pages and towns on Milton Keynes Solar Panels.';
+const q = new URL(Astro.request.url).searchParams.get('q')?.toLowerCase() || '';
+
+function match(item: { title?: string; href?: string; name?: string }, query: string) {
+  const text = (item.title || item.name || '') .toLowerCase();
+  return query && text.includes(query);
+}
+
+const pageResults = pages.filter((p) => match(p, q));
+const townResults = towns.filter((t) => match({ name: t.name }, q));
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Search</h1>
+      <form method="GET" action="/search" class="mb-6">
+        <input name="q" value={q} placeholder="Search pages" class="w-full px-4 py-3 rounded-lg border border-gray-300" />
+      </form>
+      {q ? (
+        <>
+          <h2 class="text-2xl font-lufga text-text-dark mb-2">Results for “{q}”</h2>
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-lufga text-text-dark mb-1">Pages</h3>
+              {pageResults.length ? (
+                <ul class="list-disc pl-6">
+                  {pageResults.map((p) => (
+                    <li><a class="text-accent hover:underline" href={p.href}>{p.title}</a></li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="text-neutral-600">No page matches</p>
+              )}
+            </div>
+            <div>
+              <h3 class="text-xl font-lufga text-text-dark mb-1">Towns</h3>
+              {townResults.length ? (
+                <ul class="list-disc pl-6">
+                  {townResults.map((t) => (
+                    <li><a class="text-accent hover:underline" href={`/milton-keynes/${t.slug}/solar-panels/`}>{t.name}</a></li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="text-neutral-600">No town matches</p>
+              )}
+            </div>
+          </div>
+        </>
+      ) : (
+        <p class="text-neutral-600">Enter a term above to search.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+

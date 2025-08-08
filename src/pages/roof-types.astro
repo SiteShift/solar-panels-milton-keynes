@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Roof Types in Milton Keynes | Solar Mounting & Considerations';
+const description = 'Pitched, slate, tile, and flat roofs in MK: recommended mounting, shading checks, and permitted development notes.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Roof Types in Milton Keynes" subtitle="Pitched, slate, tile, and flat roofs — what to expect for solar" label="Roof types" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Roof Types & Recommended Mounting</h1>
+      <p class="text-neutral-700 mb-6">Most MK homes can host solar. Mounting varies by roof material, pitch, and access. A technical survey confirms fixings, loading, and cable routes.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Tile (concrete/clay)</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Standard roof hooks with rail systems</li>
+            <li>Check tile condition; replace cracked tiles during install</li>
+            <li>Typical pitch aligns with the MK‑optimal 30–40° tilt</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Slate</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Slate‑specific hooks or hanger bolts; careful drilling</li>
+            <li>Experienced installer essential to avoid tile damage</li>
+            <li>Consider all‑black panels for visual consistency</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Flat roofs</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Low‑profile ballast or fixed frames to reduce wind loading</li>
+            <li>Prefer minimal tilt to balance output and aesthetics</li>
+            <li>Check membrane age; walkway mats to protect surface</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">New builds & timber trusses</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Anchor positions planned to truss layout</li>
+            <li>In‑roof options for select developments</li>
+            <li>Ensure DC/AC cable routes planned pre‑finish</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 p-6 rounded-xl border border-gray-200 bg-white">
+        <h2 class="text-xl font-lufga text-text-dark mb-2">Permissions & Building Regulations</h2>
+        <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+          <li>Most installs are permitted development when within projection limits</li>
+          <li>Listed buildings/conservation areas may require consent for street‑facing arrays</li>
+          <li>Building Regs always apply: structural load and electrical certification</li>
+        </ul>
+      </div>
+
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+      <RelatedLinks links={[
+        { href: '/installation', label: 'Installation process' },
+        { href: '/planning-permission', label: 'Planning permission in MK' },
+        { href: '/costs', label: 'Costs & payback' }
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

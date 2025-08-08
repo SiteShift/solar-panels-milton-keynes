@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Can you install on flat roofs?';
+const description = 'Flat roof solar in Milton Keynes: ballasted vs. fixed, tilt frames, and wind loading.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Can you install on flat roofs?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. We use low-profile ballasted or fixed frames (typically 10–15°). Design balances output and wind loading. Penetrations are avoided where possible; we use warrantiesafe methods.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Can you install on flat roofs?</h1>
+      <p class="text-neutral-700">Yes — we use low-profile frames and wind-calculated ballast. We maintain warranties and water integrity; penetrations are minimised and sealed correctly if used.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

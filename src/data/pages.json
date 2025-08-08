@@ -1,0 +1,19 @@
+[
+  { "title": "Solar Panel Costs & Payback", "href": "/costs", "description": "Pricing by system size and payback examples in Milton Keynes." },
+  { "title": "Solar Grants 2025", "href": "/grants", "description": "ECO4, 0% VAT, and SEG eligibility for Milton Keynes." },
+  { "title": "Savings Calculator", "href": "/calculator", "description": "Estimate annual savings, SEG earnings, and payback." },
+  { "title": "Installation Process", "href": "/installation", "description": "Survey to switch‑on with MCS‑certified teams." },
+  { "title": "Battery Storage", "href": "/battery-storage", "description": "When a battery makes sense and how to size it." },
+  { "title": "Battery Sizing", "href": "/battery-sizing", "description": "Choose the right kWh capacity for your home." },
+  { "title": "SEG (Export Tariffs)", "href": "/seg", "description": "How Smart Export Guarantee works in MK." },
+  { "title": "Export Tariffs Comparison", "href": "/export-tariffs", "description": "Compare SEG types and considerations." },
+  { "title": "Orientation, Shading & Tilt", "href": "/orientation-shading", "description": "Optimise output with roof orientation and tilt." },
+  { "title": "Panel Types", "href": "/panel-types", "description": "Mono vs Poly and what matters for MK roofs." },
+  { "title": "Panel Brands", "href": "/panel-brands", "description": "Reputable brands and what to prioritise." },
+  { "title": "ROI & Payback", "href": "/roi", "description": "How to think about ROI in MK." },
+  { "title": "Winter Performance", "href": "/winter-performance", "description": "What to expect in winter and how to maximise output." },
+  { "title": "Common Problems & Fixes", "href": "/common-problems", "description": "Typical issues and resolutions for MK homeowners." },
+  { "title": "Areas We Serve", "href": "/milton-keynes/", "description": "Town pages across Milton Keynes and nearby." },
+  { "title": "Contact", "href": "/contact", "description": "Get in touch or request a free quote." }
+]
+

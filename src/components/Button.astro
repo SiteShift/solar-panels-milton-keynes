@@ -41,7 +41,7 @@ const buttonClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[vari
 <div class="relative group">
   <div class="absolute inset-0 border border-white/15 rounded-full -m-1 -z-10 transition-colors duration-300 group-hover:border-white/25"></div>
   {href ? (
-    <a href={href} class={buttonClasses}>
+    <a href={href} class={buttonClasses} data-cta="true">
       <slot />
       {withArrow && (
         <div class="ml-3 w-7 h-7 bg-white rounded-full flex items-center justify-center">
@@ -50,7 +50,7 @@ const buttonClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[vari
       )}
     </a>
   ) : (
-    <button type={type} class={buttonClasses} onclick={onclick}>
+    <button type={type} class={buttonClasses} onclick={onclick} data-cta="true">
       <slot />
       {withArrow && (
         <div class="ml-3 w-7 h-7 bg-white rounded-full flex items-center justify-center">

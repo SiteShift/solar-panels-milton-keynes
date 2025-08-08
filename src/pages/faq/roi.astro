@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: What is the typical ROI in Milton Keynes?';
+const description = 'MK homes often see 8–12 year payback; ROI depends on usage, tariffs, generation, and battery strategy.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What is the typical ROI?', acceptedAnswer: { '@type': 'Answer', text: 'As a guide, 8–12 years in MK. Faster with higher daytime usage, time‑of‑use optimization, and right‑sized systems.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">What is the typical ROI?</h1>
+      <p class="text-neutral-700">Most MK homes recover costs in around 8–12 years depending on usage and tariffs. See our ROI guide for details.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

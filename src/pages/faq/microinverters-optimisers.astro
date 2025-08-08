@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Microinverters vs optimisers — which is better?';
+const description = 'Choosing between microinverters and DC optimisers in MK: shading, monitoring, costs.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Which is better: microinverters or optimisers?', acceptedAnswer: { '@type': 'Answer', text: 'Microinverters give panel-level AC conversion and resilience; optimisers pair with a string inverter to boost shade performance at lower cost. Choice depends on shade, layout, and budget.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Microinverters vs optimisers — which is better?</h1>
+      <p class="text-neutral-700">Microinverters excel for complex shading and panel-level monitoring. Optimisers offer a middle ground with a central inverter. We’ll recommend based on your roof and budget.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

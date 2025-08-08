@@ -1,0 +1,26 @@
+{
+  "bletchley": ["wolverton", "stony-stratford", "leighton-buzzard"],
+  "bradwell": ["loughton", "wolverton", "shenley-church-end"],
+  "loughton": ["bradwell", "shenley-church-end", "stony-stratford"],
+  "shenley-church-end": ["loughton", "bradwell", "stony-stratford"],
+  "newport-pagnell": ["olney", "bradwell", "wolverton"],
+  "wolverton": ["stony-stratford", "bradwell", "bletchley"],
+  "stony-stratford": ["wolverton", "loughton", "bletchley"],
+  "olney": ["newport-pagnell", "wellingborough", "bedford"],
+  "leighton-buzzard": ["bletchley", "woburn-sands", "aylesbury"],
+  "woburn-sands": ["leighton-buzzard", "bletchley", "towcester"],
+  "buckingham": ["stony-stratford", "towcester", "winslow"],
+  "cranfield": ["bedford", "kempston", "newport-pagnell"],
+  "towcester": ["buckingham", "stony-stratford", "northampton"],
+  "ampthill": ["flitwick", "kempston", "bedford"],
+  "kempston": ["bedford", "ampthill", "biggleswade"],
+  "bedford": ["kempston", "ampthill", "olney"],
+  "dunstable": ["leighton-buzzard", "flitwick", "aylesbury"],
+  "aylesbury": ["leighton-buzzard", "winslow", "buckingham"],
+  "winslow": ["buckingham", "aylesbury", "stony-stratford"],
+  "flitwick": ["ampthill", "kempston", "biggleswade"],
+  "biggleswade": ["flitwick", "kempston", "bedford"],
+  "wellingborough": ["olney", "northampton", "bedford"],
+  "northampton": ["towcester", "wellingborough", "stony-stratford"]
+}
+

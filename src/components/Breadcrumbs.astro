@@ -1,0 +1,45 @@
+---
+// Auto breadcrumbs from current path with JSON-LD
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const crumbs = [
+  { name: 'Home', url: '/' },
+  ...segments.map((seg, idx) => {
+    const url = '/' + segments.slice(0, idx + 1).join('/') + '/';
+    const name = seg
+      .split('-')
+      .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+      .join(' ');
+    return { name, url };
+  }),
+];
+
+const breadcrumbList = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: new URL(c.url, Astro.site).toString(),
+  })),
+};
+---
+
+<nav class="mb-6" aria-label="Breadcrumb">
+  <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-500">
+    {crumbs.map((c, i) => (
+      <li class="flex items-center gap-2">
+        {i > 0 && <span aria-hidden="true">/</span>}
+        {i === crumbs.length - 1 ? (
+          <span class="text-neutral-700">{c.name}</span>
+        ) : (
+          <a class="hover:text-neutral-700" href={c.url}>{c.name}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
+
+

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Are inverters noisy?';
+const description = 'Inverter fan noise and placement considerations for MK homes.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Are inverters noisy?', acceptedAnswer: { '@type': 'Answer', text: 'Most modern inverters are quiet; some have low fan noise at peak output. We place inverters in utility spaces/garages where possible and avoid bedrooms.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Are inverters noisy?</h1>
+      <p class="text-neutral-700">Noise is minimal on most modern units. We choose locations that minimise sound and keep cable runs tidy.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

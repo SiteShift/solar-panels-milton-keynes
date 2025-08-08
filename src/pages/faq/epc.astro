@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Will solar improve my EPC rating?';
+const description = 'EPC impact of solar PV in Milton Keynes and typical rating improvements.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Will solar improve my EPC?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Solar PV usually improves EPC by 1–2 bands depending on property and usage. Export and self-consumption both contribute to lower assessed demand.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Will solar improve my EPC rating?</h1>
+      <p class="text-neutral-700">Most MK homes see an EPC uplift after fitting solar, especially when paired with battery storage and efficient electrics.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

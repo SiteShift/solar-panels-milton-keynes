@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Cost Breakdown | Solar Panels in Milton Keynes';
+const description = 'Understand equipment vs labour, typical system sizes, and what’s included in MK solar quotes.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Cost Breakdown" subtitle="Equipment vs labour, typical sizes, and what’s included in MK quotes" label="Costs" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Cost Breakdown</h1>
+      <div class="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20">
+        <h2 class="text-lg font-lufga text-text-dark mb-2">TL;DR</h2>
+        <ul class="list-disc pl-6 text-neutral-800 space-y-1">
+          <li>Equipment ~70–80% (panels, inverter, mounting, cabling).</li>
+          <li>Labour & access ~20–30% (scaffolding, electrical work).</li>
+          <li>Quotes should include VAT, commissioning, and paperwork (MCS).</li>
+        </ul>
+      </div>
+
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">What’s included</h2>
+      <ul class="list-disc pl-6 text-neutral-700 space-y-1 mb-4">
+        <li>Panels, inverter, mounting/rails, DC/AC cabling, isolators</li>
+        <li>Scaffolding and installation labour</li>
+        <li>Commissioning, MCS certificate, DNO notification</li>
+        <li>Monitoring app setup and handover</li>
+      </ul>
+
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Typical sizes</h2>
+      <table class="w-full text-sm bg-white rounded-xl border border-gray-200">
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th class="text-left py-3 px-4">Size</th>
+            <th class="text-left py-3 px-4">Panels</th>
+            <th class="text-left py-3 px-4">After‑grant Cost</th>
+            <th class="text-left py-3 px-4">Annual Savings</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-700">
+          <tr class="border-b border-gray-100">
+            <td class="py-3 px-4">3kW</td>
+            <td class="py-3 px-4">~10</td>
+            <td class="py-3 px-4">~£4,200</td>
+            <td class="py-3 px-4">~£650</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="py-3 px-4">4kW</td>
+            <td class="py-3 px-4">~13</td>
+            <td class="py-3 px-4">~£5,400</td>
+            <td class="py-3 px-4">~£850</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="py-3 px-4">6kW</td>
+            <td class="py-3 px-4">~20</td>
+            <td class="py-3 px-4">~£7,200</td>
+            <td class="py-3 px-4">~£1,200</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4">8kW</td>
+            <td class="py-3 px-4">~26</td>
+            <td class="py-3 px-4">~£9,800</td>
+            <td class="py-3 px-4">~£1,580</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mt-8"><AuthorBox /></div>
+      <RelatedLinks links={[
+        { href: '/costs', label: 'Costs & payback' },
+        { href: '/grants', label: 'Grants & incentives' },
+        { href: '/calculator', label: 'Savings calculator' },
+        { href: '/faq/scaffolding', label: 'FAQ: Do you always need scaffolding?' },
+        { href: '/faq/mcs-paperwork', label: 'FAQ: What MCS paperwork do I get?' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

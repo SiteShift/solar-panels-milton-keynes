@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Do I need a smart meter for SEG/export?';
+const description = 'Meters for export payments in Milton Keynes: when you need a smart meter, and how to arrange changes.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Do I need a smart meter for SEG?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, suppliers require an export-capable smart meter to pay SEG. Ask your supplier to install/activate export; provide your MCS certificate when applying.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Do I need a smart meter for SEG/export?</h1>
+      <p class="text-neutral-700">SEG payments require an export-capable smart meter. Contact your supplier to arrange the meter or enable export mode before submitting your SEG application.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

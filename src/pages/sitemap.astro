@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import pages from '../data/pages.json';
+
+const title = 'HTML Sitemap | Milton Keynes Solar Panels';
+const description = 'Browse all key pages on Milton Keynes Solar Panels for easy navigation.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">HTML Sitemap</h1>
+      <ul class="space-y-2">
+        {pages.map((p) => (
+          <li>
+            <a class="text-accent hover:underline" href={p.href}>{p.title}</a>
+            <span class="text-neutral-500 text-sm"> — {p.description}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+

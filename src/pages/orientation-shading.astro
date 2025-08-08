@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Orientation, Shading & Tilt | Solar Panels in Milton Keynes';
+const description = 'How roof orientation, shading, and tilt affect solar generation in Milton Keynes, with practical optimisation tips.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Orientation, Shading & Tilt" subtitle="How roof orientation, shading, and tilt affect MK generation" label="Orientation" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Orientation, Shading & Tilt</h1>
+      <div class="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20">
+        <h2 class="text-lg font-lufga text-text-dark mb-2">TL;DR</h2>
+        <ul class="list-disc pl-6 text-neutral-800 space-y-1">
+          <li>South is best; east/west still excellent in MK.</li>
+          <li>Target ~30–40° tilt; roof pitch is usually fine.</li>
+          <li>Minimise shading; consider optimisers for partial shade.</li>
+        </ul>
+      </div>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Orientation in MK</h2>
+      <p class="text-neutral-700 mb-4">South‑facing roofs yield the highest annual generation. East/west arrays provide a broader output curve that improves self‑consumption for many families. North‑facing arrays are rarely cost‑effective unless paired with very low costs or specific objectives.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Tilt & Mounting</h2>
+      <p class="text-neutral-700 mb-4">A 30–40° tilt is near‑optimal for Milton Keynes. Most pitched roofs already sit within a suitable range. Flat roofs often use low‑profile mounts to balance generation with visual impact and wind loading.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Shading</h2>
+      <p class="text-neutral-700 mb-4">Chimneys, dormers, and trees can reduce output. Good design avoids or minimises shade windows. Power optimisers or microinverters can help in partial shade scenarios, though they add cost—use case‑by‑case.</p>
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+      <RelatedLinks links={[
+        { href: '/costs', label: 'Costs & payback in Milton Keynes' },
+        { href: '/installation', label: 'Installation process' },
+        { href: '/battery-storage', label: 'Battery storage guide' },
+        { href: '/faq/east-west', label: 'FAQ: Are east/west roofs good?' },
+        { href: '/faq/flat-roofs', label: 'FAQ: Can you install on flat roofs?' },
+        { href: '/faq/bird-proofing', label: 'FAQ: Do I need bird-proofing?' },
+      ]} />
+      <div class="mt-8 p-6 rounded-xl border border-gray-200 bg-white">
+        <h2 class="text-xl font-lufga text-text-dark mb-2">Sources</h2>
+        <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+          <li><a class="text-accent hover:underline" href="https://mcscertified.com/" target="_blank" rel="noopener">MCS — installation standards</a></li>
+          <li><a class="text-accent hover:underline" href="https://www.ofgem.gov.uk" target="_blank" rel="noopener">Ofgem — generation and tariffs</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

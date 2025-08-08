@@ -9,7 +9,7 @@ export interface Props {
 
 const { title, description, canonical, ogImage, structuredData } = Astro.props;
 const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = ogImage || new URL('/og-default.jpg', Astro.site);
+const ogImageURL = ogImage || new URL('/solarpanels-miltonkeynes.webp', Astro.site);
 
 // Ensure structured data is always an array for consistent handling
 const structuredDataArray = structuredData 

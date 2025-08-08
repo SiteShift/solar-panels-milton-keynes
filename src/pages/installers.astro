@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+
+const title = 'Installers | Solar Panels Milton Keynes';
+const description = 'How we vet Milton Keynes solar panel installers: MCS certification, reviews, warranties, and local track record.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero title="Vetted Solar Installers in Milton Keynes" subtitle="MCS‑certified partners with strong aftercare and workmanship warranties" label="Installers" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Vetted Solar Installers in Milton Keynes</h1>
+      <p class="text-neutral-700 mb-6">We connect you with trusted, MCS‑certified teams. We review experience, workmanship warranties, brand partnerships, and local reviews.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-3">Our vetting criteria</h2>
+      <ul class="list-disc pl-6 space-y-2 text-neutral-700">
+        <li>MCS certification and insurance</li>
+        <li>Consistent local reviews (4.5★+)</li>
+        <li>25‑year panel performance warranties</li>
+        <li>Clean installation standards and aftercare</li>
+      </ul>
+      <RelatedLinks links={[
+        { href: '/case-studies/', label: 'See local case studies' },
+        { href: '/warranties', label: 'Warranties & guarantees' },
+        { href: '/grants', label: 'Grants & incentives' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: How do you handle shading from trees/chimneys?';
+const description = 'Shading mitigation in Milton Keynes: layout, optimisers, micros, pruning, and expectations.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'How do you handle shading?', acceptedAnswer: { '@type': 'Answer', text: 'We design strings to avoid shade, use optimisers or microinverters where needed, and may suggest pruning. Expect some winter losses where low-angle shade is unavoidable.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">How do you handle shading from trees/chimneys?</h1>
+      <p class="text-neutral-700">We use shade-aware layouts, optimisers or microinverters, and realistic yield estimates. Strategic pruning can help in some cases.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Will solar work in a power cut?';
+const description = 'How solar and batteries behave during power cuts and what backup options exist.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Will solar work in a power cut?', acceptedAnswer: { '@type': 'Answer', text: 'Standard grid-tied systems shut down for safety during outages. With a compatible hybrid inverter and battery, essential circuits can be kept on via backup/UPS mode.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Will solar work in a power cut?</h1>
+      <p class="text-neutral-700">Grid-tied inverters shut down during outages for safety. A hybrid inverter with a battery can power a dedicated essential circuit if specified at design time.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

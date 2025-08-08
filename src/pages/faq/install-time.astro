@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: How long does installation take?';
+const description = 'Most Milton Keynes homes are installed in one day, with surveys and commissioning around it.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How long does installation take?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Most residential installs complete in one day. The full process typically spans 2–3 weeks including remote survey, site visit, DNO notification, and commissioning.' },
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">How long does installation take?</h1>
+      <p class="text-neutral-700">Most installs are finished in one day by an MCS team. Expect 2–3 weeks end‑to‑end including survey, scheduling, and commissioning paperwork.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

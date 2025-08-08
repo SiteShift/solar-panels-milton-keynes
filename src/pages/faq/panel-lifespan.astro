@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: How long do solar panels last?';
+const description = 'Typical panel lifespan, degradation, and warranty expectations in Milton Keynes.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'How long do solar panels last?', acceptedAnswer: { '@type': 'Answer', text: 'Panels commonly last 25–35+ years. Performance degrades slowly (~0.3–0.6%/yr). Most brands warrant ~84–87% output at year 25; product warranty varies 10–25 years.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">How long do solar panels last?</h1>
+      <p class="text-neutral-700">Expect reliable generation beyond 25 years. Degradation is modest and covered by performance warranties.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

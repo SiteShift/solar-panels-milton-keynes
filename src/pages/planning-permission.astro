@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+const title = 'Planning Permission | Solar Panels in Milton Keynes';
+const description = 'Do you need planning permission for solar panels in Milton Keynes? Most installs are permitted development. Learn the exceptions.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Emily Harris',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Planning Permission for Solar in Milton Keynes" subtitle="Most installs are permitted development — know the edge cases" label="Planning" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Planning Permission in Milton Keynes</h1>
+      <p class="text-neutral-700 mb-6">Most residential solar panel installs in Milton Keynes are permitted development. Planning permission is generally not required if you follow the limits below and design to minimise visual impact.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Permitted development limits (typical)</h2>
+      <ul class="list-disc pl-6 space-y-2 text-neutral-700">
+        <li>Panels must not project above the highest part of the roof (excluding chimneys)</li>
+        <li>Projection from the wall or roof slope not to exceed ~200mm</li>
+        <li>Flat roofs: keep frames low (typically ≤600mm above the highest roof point)</li>
+        <li>Position to minimise visual impact; remove equipment when no longer needed</li>
+      </ul>
+
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">When planning permission may be required</h2>
+      <ul class="list-disc pl-6 space-y-2 text-neutral-700">
+        <li>Listed buildings or within the curtilage of listed buildings</li>
+        <li>Conservation areas (especially wall‑mounted panels facing highways)</li>
+        <li>World Heritage Sites, scheduled monuments, or sensitive front elevations</li>
+      </ul>
+
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">Building Regulations (always apply)</h2>
+      <ul class="list-disc pl-6 space-y-2 text-neutral-700">
+        <li>Structural: verify roof loading and fixings with a pre‑installation assessment</li>
+        <li>Electrical: new circuits must comply; require electrical safety certification</li>
+        <li>Compliance route: MK Council Building Control or MCS installer via Competent Person Scheme</li>
+        <li>Keep documentation: structural sign‑off, electrical certificate, and Building Regulations Compliance Certificate</li>
+      </ul>
+      <p class="text-neutral-700 mt-3 text-sm">MK Building Control: 01908 252721</p>
+
+      <p class="text-neutral-700 mt-6">See also: <a class="text-accent hover:underline" href="/planning-permission">Milton Keynes Council guidance</a> and our <a class="text-accent hover:underline" href="/installation">installation process</a>.</p>
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

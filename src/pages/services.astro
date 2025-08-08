@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+
+const title = 'Services | Solar Panels Milton Keynes';
+const description = 'Explore solar panel installation, battery storage, maintenance, and EV charging services in Milton Keynes.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero title="Solar Services in Milton Keynes" subtitle="Installation, battery storage, maintenance, and EV charging" label="Services" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-6">Our Services</h1>
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="/installation" class="block p-6 rounded-xl border border-border-gray hover:border-accent/50 transition-colors bg-white">
+          <h2 class="text-xl font-lufga mb-2">Solar Panel Installation</h2>
+          <p class="text-neutral-700">Design, supply and fit by MCS‑certified teams, with 25‑year warranties.</p>
+        </a>
+        <a href="/battery-storage" class="block p-6 rounded-xl border border-border-gray hover:border-accent/50 transition-colors bg-white">
+          <h2 class="text-xl font-lufga mb-2">Battery Storage</h2>
+          <p class="text-neutral-700">Optimise self‑consumption and backup power with right‑sized batteries.</p>
+        </a>
+        <a href="/maintenance" class="block p-6 rounded-xl border border-border-gray hover:border-accent/50 transition-colors bg-white">
+          <h2 class="text-xl font-lufga mb-2">Maintenance & Monitoring</h2>
+          <p class="text-neutral-700">Keep your system performing at its best with annual checks and monitoring.</p>
+        </a>
+        <a href="/ev-charging" class="block p-6 rounded-xl border border-border-gray hover:border-accent/50 transition-colors bg-white">
+          <h2 class="text-xl font-lufga mb-2">EV Charging</h2>
+          <p class="text-neutral-700">Smart EV charger supply and installation to complement your solar PV.</p>
+        </a>
+      </div>
+      <div class="mt-8">
+        <Button href="/contact" size="large" withArrow={true}>Get Free Quote</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -4,13 +4,17 @@ export interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
-  structuredData?: object;
+  structuredData?: object | object[];
 }
 
 const { title, description, canonical, ogImage, structuredData } = Astro.props;
-const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = ogImage || new URL('/Solar Panels Milton Keynes (1).webp', Astro.site);
 import Footer from '../components/Footer.astro';
+import StickyCta from '../components/StickyCta.astro';
+import Header from '../components/Header.astro';
+import ExitPrompt from '../components/ExitPrompt.astro';
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = ogImage || new URL('/solarpanels-miltonkeynes.webp', Astro.site);
+// duplicate import removed
 ---
 
 <!doctype html>
@@ -41,13 +45,29 @@ import Footer from '../components/Footer.astro';
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageURL} />
     
-    <!-- Structured Data -->
-    {structuredData && (
+    <!-- Structured Data (supports single object or array) -->
+    {structuredData && (Array.isArray(structuredData) ? (
+      structuredData.map((sd) => (
+        <script type="application/ld+json" set:html={JSON.stringify(sd)} />
+      ))
+    ) : (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    )}
+    ))}
+
+    <!-- WebSite SearchAction for site search -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      url: Astro.site?.toString?.() || 'https://solarpanels-miltonkeynes.com',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: new URL('/search?q={search_term_string}', Astro.site).toString(),
+        'query-input': 'required name=search_term_string'
+      }
+    })} />
 
     {Astro.url.pathname === '/' && (
-      <link rel="preload" as="image" href="/Solar Panels Milton Keynes (1).webp" imagesrcset="/Solar Panels Milton Keynes (1).webp" imagesizes="100vw" fetchpriority="high" />
+      <link rel="preload" as="image" href="/solarpanels-miltonkeynes.webp" imagesrcset="/solarpanels-miltonkeynes.webp" imagesizes="100vw" fetchpriority="high" />
     )}
     
     <!-- Local font used; no external font preconnects needed -->
@@ -107,8 +127,21 @@ import Footer from '../components/Footer.astro';
   </head>
   <body class="bg-white text-text-dark font-lufga antialiased">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-black text-white px-3 py-2 rounded">Skip to main content</a>
+    <Header />
     <slot />
+    <StickyCta />
+    <ExitPrompt />
     <Footer />
+    <script is:inline>
+      window.addEventListener('click', (e) => {
+        const el = e.target.closest?.('[data-cta="true"]');
+        if (el && window.gtag) {
+          try {
+            window.gtag('event', 'cta_click', { label: (el.textContent || '').trim() || 'cta' });
+          } catch {}
+        }
+      });
+    </script>
     
     <!-- Google Analytics 4 -->
     {import.meta.env.PUBLIC_GA_ID && (

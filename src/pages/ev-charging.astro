@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'EV Charging for Solar Homes | Milton Keynes';
+const description = 'Smart EV charger supply and installation in Milton Keynes. Pair with solar and (optionally) a battery to cut charging costs.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'EV Charger Installation',
+  areaServed: { '@type': 'Place', name: 'Milton Keynes' },
+  provider: { '@type': 'Organization', '@id': 'https://solarpanels-miltonkeynes.com/#organization' },
+  description,
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="EV Charging for Solar Homes" subtitle="Smart chargers that work with solar and off‑peak tariffs in MK" label="EV charging" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">EV Charging for Solar Homes</h1>
+      <p class="text-neutral-700 mb-6">We install smart EV chargers that integrate with your solar PV and time‑of‑use tariffs. Charge using sunshine by day and cheaper night rates with a battery—maximising self‑consumption and minimising costs.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Why go smart?</h2>
+      <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+        <li>Schedule charging in off‑peak windows</li>
+        <li>Prioritise solar surplus before importing</li>
+        <li>App control and usage tracking</li>
+      </ul>
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+      <RelatedLinks links={[
+        { href: '/battery-storage', label: 'Battery storage guide' },
+        { href: '/faq/ev-battery', label: 'FAQ: Do EV owners benefit more from a battery?' },
+        { href: '/faq/tariffs', label: 'FAQ: Export tariffs and TOU overview' },
+        { href: '/installation', label: 'Installation process' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

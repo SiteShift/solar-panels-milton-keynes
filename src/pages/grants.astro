@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+const title = 'Solar Grants 2025 | Milton Keynes';
+const description = 'ECO4, 0% VAT, and Smart Export Guarantee explained for Milton Keynes. Check your eligibility and get a free quote.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Solar Grants in Milton Keynes (2025)',
+  description,
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Emily Harris',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Solar Grants in Milton Keynes (2025)" subtitle="ECO4 eligibility, 0% VAT, and Smart Export Guarantee (SEG)" label="Grants" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Solar Grants in Milton Keynes (2025)</h1>
+      <div class="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20">
+        <h2 class="text-lg font-lufga text-text-dark mb-2">TL;DR</h2>
+        <ul class="list-disc pl-6 text-neutral-800 space-y-1">
+          <li>ECO4 can cover up to 100% of costs for eligible households.</li>
+          <li>Domestic solar is 0% VAT until March 2027.</li>
+          <li>SEG pays you for exported electricity; compare suppliers.</li>
+        </ul>
+      </div>
+      <p class="text-neutral-700 mb-6">Understand ECO4 eligibility, 0% VAT savings, and Smart Export Guarantee earnings. We’ll guide you through applications.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">ECO4 — Who qualifies?</h2>
+      <ul class="list-disc pl-6 text-neutral-700 mb-6">
+        <li>Household income typically ≤ £31,000 and/or means‑tested benefits</li>
+        <li>Home EPC of D or below (property‑level eligibility)</li>
+        <li>Installed by MCS‑certified installers with proper documentation</li>
+      </ul>
+
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Smart Export Guarantee (SEG)</h2>
+      <ul class="list-disc pl-6 text-neutral-700 mb-6">
+        <li>Typical export rates range ~1–6p/kWh; compare suppliers</li>
+        <li>Requirements: MCS certificate and a smart meter</li>
+      </ul>
+
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">0% VAT (until April 2027)</h2>
+      <ul class="list-disc pl-6 text-neutral-700 mb-6">
+        <li>Applies to domestic solar panels and battery storage</li>
+        <li>Meaningful savings on total installed cost</li>
+      </ul>
+
+      <div class="mb-6 p-4 rounded-xl bg-white border border-gray-200">
+        <p class="text-sm text-neutral-700"><strong>Local note:</strong> Buckinghamshire’s Solar Together group‑buy scheme has previously delivered 20–30% discounts via collective purchasing. Check the latest council announcements for upcoming rounds.</p>
+      </div>
+      <Button href="/contact" size="large" withArrow={true}>Check My Eligibility</Button>
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+      <RelatedLinks links={[
+        { href: '/costs', label: 'Solar costs and payback in Milton Keynes' },
+        { href: '/calculator', label: 'Savings calculator' },
+        { href: '/installation', label: 'Installation process' },
+        { href: '/faq/smart-meter-export', label: 'FAQ: Do I need a smart meter for SEG?' },
+        { href: '/faq/dno-export-limits', label: 'FAQ: What are DNO/export limits?' },
+        { href: '/faq/tariffs', label: 'FAQ: Which tariffs work with solar?' },
+        { href: '/roi', label: 'ROI & payback explained' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

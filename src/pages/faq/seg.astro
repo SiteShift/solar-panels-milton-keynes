@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Smart Export Guarantee (SEG) | Milton Keynes';
+const description = 'Answers to common questions about SEG for MK homeowners.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is SEG? ',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Smart Export Guarantee pays you for electricity exported to the grid from your solar PV system.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need an MCS certificate?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, MCS certification and an export-capable smart meter are required by suppliers.'
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">FAQ: Smart Export Guarantee (SEG)</h1>
+      <div class="space-y-6">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-lg font-lufga text-text-dark mb-2">What is SEG?</h2>
+          <p class="text-neutral-700">The Smart Export Guarantee pays you for electricity exported to the grid from your solar PV system.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-lg font-lufga text-text-dark mb-2">Do I need an MCS certificate?</h2>
+          <p class="text-neutral-700">Yes, MCS certification and an export-capable smart meter are required by suppliers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

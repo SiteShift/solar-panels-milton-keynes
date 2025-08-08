@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: What warranties do I get?';
+const description = 'Panel performance, product, inverter and workmanship warranties for MK installs.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What warranties are standard?', acceptedAnswer: { '@type': 'Answer', text: 'Panels: 25‑year performance, 10–25 years product. Inverter: 5–12 years standard, extensions available. Workmanship: typically 2–10 years.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">What warranties do I get?</h1>
+      <p class="text-neutral-700">Panels include a long performance warranty (~84–87% at year 25) and a product warranty. Inverters are 5–12 years; workmanship varies by installer.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

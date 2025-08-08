@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: How long do DNO approvals take?';
+const description = 'Typical G98 notifications and G99 approvals timelines for MK homes, and what affects them.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'How long do DNO approvals take?', acceptedAnswer: { '@type': 'Answer', text: 'G98 is normally a post-install notification with no delay. G99 pre-approvals can take a few weeks depending on DNO workload; your installer manages the submission.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">How long do DNO approvals take?</h1>
+      <p class="text-neutral-700">Most single-phase homes proceed under G98 with post-install notification. Larger systems requiring G99 can take a few weeks; we handle all paperwork.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

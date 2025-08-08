@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Which tariffs work best with solar in MK?';
+const description = 'Time-of-use and export tariffs: how MK homeowners pair them with solar and (optionally) a battery.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Which tariffs are best with solar?', acceptedAnswer: { '@type': 'Answer', text: 'Time-of-use import tariffs can reduce night rates; SEG pays for exported electricity. Many MK homes use TOU + SEG; batteries can shift cheap imports to evening use.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Which tariffs work best with solar?</h1>
+      <p class="text-neutral-700">Look for time-of-use import tariffs and a competitive SEG export rate. Batteries can amplify savings if night rates are low.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

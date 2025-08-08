@@ -1,0 +1,30 @@
+---
+export interface Props { label?: string }
+const { label = '' } = Astro.props as Props;
+---
+
+<figure class="p-4 rounded-xl border border-gray-200 bg-white">
+  <svg viewBox="0 0 240 120" class="w-full h-auto" role="img" aria-label={`Solar roof diagram ${label}`}>
+    <defs>
+      <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#e0f7ff" />
+        <stop offset="100%" stop-color="#ffffff" />
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="240" height="120" fill="url(#sky)" />
+    <!-- Sun -->
+    <circle cx="200" cy="30" r="16" fill="#ffdf6e" />
+    <!-- Roof -->
+    <polygon points="40,80 150,50 190,80 80,100" fill="#d9d9d9" stroke="#8a8a8a" />
+    <!-- Panels -->
+    <g transform="translate(58,68) rotate(-15)">
+      <rect x="0" y="0" width="28" height="16" fill="#0f172a" stroke="#94a3b8" />
+      <rect x="32" y="0" width="28" height="16" fill="#0f172a" stroke="#94a3b8" />
+      <rect x="64" y="0" width="28" height="16" fill="#0f172a" stroke="#94a3b8" />
+    </g>
+  </svg>
+  {label && <figcaption class="mt-2 text-xs text-neutral-600">Optimal tilt ~30–40°. {label}</figcaption>}
+  
+</figure>
+
+

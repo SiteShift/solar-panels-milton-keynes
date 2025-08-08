@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: What are DNO/export limits in MK?';
+const description = 'G98/G99 notifications, typical 3.68kW per phase export limits, and when approvals are needed in Milton Keynes.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What are common export limits?', acceptedAnswer: { '@type': 'Answer', text: 'Most single-phase homes are limited to 3.68kW export under G98. Larger systems or higher export levels may require prior approval (G99) from your DNO.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">What are DNO/export limits in MK?</h1>
+      <p class="text-neutral-700">Single-phase homes typically have 3.68kW export limits (G98). Higher exports or larger inverters may need DNO approval under G99. Your installer handles the paperwork.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

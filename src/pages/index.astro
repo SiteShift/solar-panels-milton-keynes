@@ -1,56 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import PageHero from '../components/PageHero.astro';
 
 // SEO data
 const title = 'Solar Panels Milton Keynes | MCS Certified Installers | Free Quote';
 const description = 'Cut energy bills by up to 70% with solar panels in Milton Keynes. MCS-certified installers. Free quotes, grants available. Call today for expert advice.';
 
-// Structured data for LocalBusiness
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': 'https://solarpanels-miltonkeynes.com/#business',
-  name: 'Milton Keynes Solar Guide',
-  url: 'https://solarpanels-miltonkeynes.com',
-  areaServed: 'Milton Keynes',
-  telephone: '+44 1908 123456',
-  image: 'https://solarpanels-miltonkeynes.com/logo.png',
-  description: 'Professional solar panel installation service in Milton Keynes. MCS certified installers helping homeowners reduce energy bills with high-quality solar PV systems.',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Milton Keynes',
-    addressRegion: 'Buckinghamshire',
-    addressCountry: 'GB'
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 52.0406,
-    longitude: -0.7594
-  },
-  serviceArea: {
-    '@type': 'GeoCircle',
-    geoMidpoint: {
-      '@type': 'GeoCoordinates',
-      latitude: 52.0406,
-      longitude: -0.7594
-    },
-    geoRadius: 25000
-  }
-};
+// Connector brand uses Organization schema (no GBP LocalBusiness schema)
 
-// Organization schema
+// Organization schema (connector brand)
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': 'https://solarpanels-miltonkeynes.com/#organization',
-  name: 'Milton Keynes Solar Guide',
+  name: 'Milton Keynes Solar Panels',
   url: 'https://solarpanels-miltonkeynes.com',
-  logo: 'https://solarpanels-miltonkeynes.com/logo.png',
-  sameAs: [
-    'https://www.facebook.com/mksolarpanels',
-    'https://twitter.com/mksolarpanels'
-  ]
+  email: 'mailto:solarpanelsmiltonkeynes@gmail.com',
+  logo: new URL('/Solar Panels Milton Keynes logo-cropped (1).svg', Astro.site).toString()
 };
 
 // FAQ Schema
@@ -101,12 +68,12 @@ const faqSchema = {
   ]
 };
 
-// Service Schema
+// Service Schema (id-linked to Organization)
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   'serviceType': 'Solar Panel Installation',
-  'provider': {'@id': 'https://solarpanels-miltonkeynes.com/#business'},
+  'provider': {'@id': 'https://solarpanels-miltonkeynes.com/#organization'},
   'areaServed': {'@type': 'Place', 'name': 'Milton Keynes'},
   'offers': {
     '@type': 'Offer',
@@ -115,37 +82,12 @@ const serviceSchema = {
   }
 };
 
-const structuredData = [localBusinessSchema, organizationSchema, faqSchema, serviceSchema];
+const structuredData = [organizationSchema, faqSchema, serviceSchema];
 ---
 
 <BaseLayout title={title} description={description} structuredData={structuredData}>
-  
-  
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 py-4">
-    <div class="flex justify-center px-4 sm:px-6 lg:px-8">
-      <nav class="bg-black/60 backdrop-blur-md border border-white/20 rounded-full px-8 py-3 flex items-center justify-between w-[60vw]" role="navigation" aria-label="Primary">
-        <div class="flex items-center">
-          <img src="/Solar Panels Milton Keynes logo-cropped (1).svg" alt="Solar Panels Milton Keynes" class="h-12 w-auto" width="160" height="48" loading="eager" decoding="async" />
-        </div>
-        <div class="hidden md:flex space-x-8">
-          <a href="/about" class="text-gray-300 hover:text-white font-lufga transition-colors text-base">about</a>
-          <a href="/services" class="text-gray-300 hover:text-white font-lufga transition-colors text-base">services</a>
-          <a href="/installers" class="text-gray-300 hover:text-white font-lufga transition-colors text-base">installers</a>
-          <a href="/blog" class="text-gray-300 hover:text-white font-lufga transition-colors text-base">blog</a>
-        </div>
-        <div class="flex items-center">
-          <Button href="#quote" size="small" withArrow={true}>
-            contact us
-          </Button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
+  <!-- Hero Section (restored) -->
   <section class="relative min-h-screen flex items-center pt-20" id="main-content" aria-labelledby="hero-heading">
-    <!-- Background Image -->
     <div class="absolute inset-0">
       <img 
         src="/Solar Panels Milton Keynes (1).webp" 
@@ -158,25 +100,23 @@ const structuredData = [localBusinessSchema, organizationSchema, faqSchema, serv
       />
       <div class="absolute inset-0 bg-gradient-to-r from-white/80 via-white/60 to-transparent"></div>
     </div>
-    
-    <!-- Content -->
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div class="max-w-3xl">
-                      <!-- Trust Indicator -->
-              <div class="bg-white/40 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-3 mb-8 max-w-fit">
-                <img class="h-10 w-auto" src="/profile-set-hero (1)_compressed.webp" alt="Happy customers" />
-                <div class="flex flex-col items-start space-y-1">
-                  <div class="flex space-x-0">
-          {Array.from({ length: 5 }, () => (
-                      <svg class="w-5 h-5 text-accent fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                      </svg>
-                    ))}
-                  </div>
-                  <span class="text-xs font-lufga text-gray-400">Trusted by Locals</span>
-                </div>
-              </div>
-        
+        <!-- Trust Indicator -->
+        <div class="bg-white/40 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-3 mb-8 max-w-fit">
+          <img class="h-10 w-auto" src="/profile-set-hero (1)_compressed.webp" alt="Happy customers" />
+          <div class="flex flex-col items-start space-y-1">
+            <div class="flex space-x-0">
+              {Array.from({ length: 5 }, () => (
+                <svg class="w-5 h-5 text-accent fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <span class="text-xs font-lufga text-gray-400">Trusted by Locals</span>
+          </div>
+        </div>
+
         <!-- 40-Word Answer Box -->
         <div class="mb-6">
           <p class="text-lg lg:text-xl font-lufga text-text-dark leading-relaxed">
@@ -185,18 +125,14 @@ const structuredData = [localBusinessSchema, organizationSchema, faqSchema, serv
         </div>
 
         <!-- Main Heading -->
-        <h1 id="hero-heading" class="text-5xl lg:text-7xl font-lufga text-text-dark leading-none tracking-tighter mb-8">
+        <h1 id="hero-heading" class="text-5xl lg:text-7xl font-lufga text-text-dark leading-none tracking-tight mb-8">
           Your trusted provider for Solar Panels in Milton Keynes
         </h1>
-        
+
         <!-- Hero CTAs -->
         <div class="flex flex-col sm:flex-row gap-4 mb-12">
-          <Button href="#quote" size="large" withArrow={true}>
-            Get Free Quote
-          </Button>
-          <Button href="#calculator" variant="secondary" size="large">
-            Calculate Savings
-          </Button>
+          <Button href="/contact" size="large" withArrow={true}>Get Free Quote</Button>
+          <Button href="#calculator" variant="secondary" size="large">Calculate Savings</Button>
         </div>
       </div>
     </div>
@@ -362,7 +298,7 @@ const structuredData = [localBusinessSchema, organizationSchema, faqSchema, serv
               <p class="text-sm text-gray-600 mb-4">
                 Over 25 years, you'll save approximately <strong class="text-accent">£21,750</strong> after paying off your initial investment.
               </p>
-              <Button href="#quote" class="w-full">
+              <Button href="/contact" class="w-full">
                 Get My Personal Quote
               </Button>
             </div>
@@ -472,12 +408,12 @@ const structuredData = [localBusinessSchema, organizationSchema, faqSchema, serv
           <h3 class="text-xl font-lufga text-text-dark mb-3">Smart Export Guarantee</h3>
           <div class="text-2xl font-lufga text-accent mb-3">£180/year</div>
           <p class="text-gray-600 mb-4">
-            Get paid for excess electricity you export to the grid. Guaranteed payments for 20+ years.
+            Get paid for each kWh you export to the grid. Rates vary by supplier — compare regularly.
           </p>
           <ul class="text-sm text-gray-600 space-y-1">
-            <li>• 5.5p per kWh exported</li>
-            <li>• No minimum system size</li>
-            <li>• Automatic payments</li>
+            <li>• Export-capable smart meter required</li>
+            <li>• MCS certificate and application needed</li>
+            <li>• Export rate set by your supplier</li>
           </ul>
         </div>
 
@@ -496,7 +432,7 @@ const structuredData = [localBusinessSchema, organizationSchema, faqSchema, serv
       </div>
 
       <div class="mt-8 text-center">
-        <Button href="#quote" size="large" withArrow={true}>
+        <Button href="/contact" size="large" withArrow={true}>
           Check My Grant Eligibility
         </Button>
       </div>

@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Contact | Milton Keynes Solar Panels';
+const description = 'Get in touch with Milton Keynes Solar Panels. We connect locals with vetted, MCS‑certified installers. Request a free quote.';
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: title,
+  description,
+  about: {
+    '@type': 'Organization',
+    name: 'Milton Keynes Solar Panels',
+    areaServed: { '@type': 'Place', name: 'Milton Keynes' },
+    email: 'solarpanelsmiltonkeynes@gmail.com',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={contactSchema}>
+  <PageHero title="Contact Milton Keynes Solar Panels" subtitle="We’ll match you with a vetted, MCS‑certified local installer" label="Contact" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Contact Us</h1>
+      <p class="text-neutral-700 mb-6">We connect Milton Keynes homeowners with vetted, MCS‑certified solar installers. For the fastest response, request a free quote using the button below, or email us directly.</p>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Details</h2>
+          <ul class="text-neutral-700 space-y-2">
+            <li><span class="text-neutral-500">Email:</span> <a class="text-accent hover:underline" href="mailto:solarpanelsmiltonkeynes@gmail.com">solarpanelsmiltonkeynes@gmail.com</a></li>
+            <li><span class="text-neutral-500">Location:</span> Milton Keynes, Buckinghamshire, UK</li>
+            <li><span class="text-neutral-500">Hours:</span> Mon–Fri 9:00–17:30</li>
+            <li><span class="text-neutral-500">Service area:</span> Milton Keynes + 25 miles</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Get a Free Quote</h2>
+          <p class="text-neutral-700 mb-3">Answer a few quick questions and we’ll match you with a trusted local installer.</p>
+          <Button href="#quote" size="large" withArrow={true}>Start My Quote</Button>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <a class="text-accent hover:underline" href="/milton-keynes/">See all towns we serve →</a>
+      </div>
+
+      <section id="quote" class="mt-12 p-6 rounded-xl border border-gray-200 bg-white">
+        <h2 class="text-2xl font-lufga text-text-dark mb-2">Tell us about your property</h2>
+        <p class="text-neutral-600 mb-4">We’ll review your roof and send your free quote. This takes less than a minute.</p>
+        <form name="contact-quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+          <input type="hidden" name="form-name" value="contact-quote" />
+          <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+          <div id="step-1" class="space-y-4">
+            <div class="grid md:grid-cols-3 gap-4">
+              <input name="firstName" autocomplete="given-name" required placeholder="First name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent" />
+              <input name="lastName" autocomplete="family-name" required placeholder="Last name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent" />
+              <input type="email" name="email" autocomplete="email" required placeholder="Email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent" />
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <input type="tel" name="phone" autocomplete="tel" required placeholder="Phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent" />
+              <input name="postcode" required placeholder="Postcode (e.g. MK9 3XS)" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent" />
+            </div>
+            <div class="flex justify-end">
+              <button type="button" id="next" class="bg-text-dark text-white px-6 py-3 rounded-lg">Next</button>
+            </div>
+          </div>
+
+          <div id="step-2" class="space-y-4 hidden">
+            <div class="grid md:grid-cols-3 gap-4">
+              <select name="roofOrientation" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent">
+                <option value="" selected>Roof orientation</option>
+                <option>South</option>
+                <option>East/West</option>
+                <option>Mixed</option>
+              </select>
+              <select name="bill" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent">
+                <option value="">Monthly electricity bill</option>
+                <option>£50–£100</option>
+                <option>£100–£150</option>
+                <option>£150–£200</option>
+                <option>£200+</option>
+              </select>
+              <select name="batteryInterest" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent">
+                <option value="">Battery interest</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Maybe</option>
+              </select>
+            </div>
+            <label class="flex items-start gap-2 text-sm text-neutral-600"><input type="checkbox" required class="mt-1" /> I agree to be contacted about my quote. We never share your details. See <a class="text-accent hover:underline" href="/privacy">Privacy</a>.</label>
+            <div class="flex justify-between">
+              <button type="button" id="back" class="px-6 py-3 rounded-lg border border-gray-300">Back</button>
+              <button type="submit" class="bg-text-dark text-white px-6 py-3 rounded-lg">Get My Free Quote</button>
+            </div>
+          </div>
+        </form>
+        <script is:inline>
+          const step1 = document.getElementById('step-1');
+          const step2 = document.getElementById('step-2');
+          const next = document.getElementById('next');
+          const back = document.getElementById('back');
+          next?.addEventListener('click', () => { step1.classList.add('hidden'); step2.classList.remove('hidden'); window.scrollTo({ top: step2.offsetTop - 80, behavior: 'smooth' }); });
+          back?.addEventListener('click', () => { step2.classList.add('hidden'); step1.classList.remove('hidden'); window.scrollTo({ top: step1.offsetTop - 80, behavior: 'smooth' }); });
+        </script>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
+
+

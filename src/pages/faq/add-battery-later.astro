@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Can I add a battery later?';
+const description = 'Adding a home battery to an existing solar PV system in Milton Keynes and what to check.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Can I add a battery later?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Check inverter compatibility (AC-coupled vs hybrid) and space for isolators/cabling. Many MK homes add batteries later when tariffs or budgets align.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Can I add a battery later?</h1>
+      <p class="text-neutral-700">Most systems can add a battery later via an AC-coupled unit or by swapping to a hybrid inverter. We design with future-ready cabling where possible.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

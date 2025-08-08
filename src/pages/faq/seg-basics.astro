@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: What is the Smart Export Guarantee (SEG)?';
+const description = 'SEG pays you for exported electricity. Learn the basics for Milton Keynes homeowners.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is SEG?',
+      acceptedAnswer: { '@type': 'Answer', text: 'SEG is a scheme that pays for electricity exported to the grid by microgenerators like domestic solar. You need MCS certification and a smart meter.' },
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">What is SEG?</h1>
+      <p class="text-neutral-700">SEG rates vary by supplier and can be fixed or variable. See our comparison page for current considerations.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

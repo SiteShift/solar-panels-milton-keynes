@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Do I need planning permission in Milton Keynes?';
+const description = 'Most MK installs are permitted development. Learn the common exceptions and building regs.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need planning permission in MK?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Most installs are permitted development if within projection limits and sited to minimise visual impact. Exceptions include listed buildings and certain conservation scenarios.' },
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Do I need planning permission?</h1>
+      <p class="text-neutral-700">Most residential installs in MK are permitted development; see our full guide for the exceptions and building regulation requirements.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

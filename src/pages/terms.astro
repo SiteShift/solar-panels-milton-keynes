@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = 'Terms & Conditions | Milton Keynes Solar Panels';
+const description = 'Website terms for Milton Keynes Solar Panels. Learn how to use our site and services responsibly.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Terms & Conditions</h1>
+      <p class="text-neutral-700 mb-4">By using this site, you agree to these terms.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">Service scope</h2>
+      <p class="text-neutral-700">We provide a connection service, introducing homeowners to vetted, MCS‑certified installers. We are not the installer and do not guarantee third‑party work. Quotes and installations are subject to each installer’s terms.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">Liability</h2>
+      <p class="text-neutral-700">We are not liable for losses resulting from third‑party services. Always review installer contracts and warranties.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">Contact</h2>
+      <p class="text-neutral-700">For questions, contact <a class="text-accent hover:underline" href="mailto:solarpanelsmiltonkeynes@gmail.com">solarpanelsmiltonkeynes@gmail.com</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

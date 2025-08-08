@@ -1,0 +1,47 @@
+---
+---
+
+<div id="exit-prompt" class="fixed inset-x-0 bottom-0 z-40 hidden">
+  <div class="mx-4 mb-4 rounded-2xl bg-neutral-900/90 backdrop-blur-md text-white shadow-2xl border border-white/10">
+    <div class="flex items-center justify-between gap-4 px-5 py-4">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent text-black font-bold">★</span>
+        <p class="text-sm md:text-base">Get a free, same‑day solar quote for Milton Keynes. No obligation.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/contact" class="px-4 py-2 rounded-full bg-white text-black font-semibold button-3d" data-cta="true">Get Free Quote</a>
+        <button id="exit-prompt-close" aria-label="Dismiss" class="text-white/70 hover:text-white">✕</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const KEY = 'mk_exit_prompt_dismissed_v1';
+  const promptEl = document.getElementById('exit-prompt');
+  const closeEl = document.getElementById('exit-prompt-close');
+  const showPrompt = () => {
+    if (!promptEl) return;
+    if (localStorage.getItem(KEY)) return;
+    promptEl.classList.remove('hidden');
+  };
+  const hidePrompt = () => {
+    promptEl?.classList.add('hidden');
+    try { localStorage.setItem(KEY, String(Date.now())); } catch {}
+  };
+  closeEl?.addEventListener('click', hidePrompt);
+  // Show near bottom or on exit intent, once per user
+  let shown = false;
+  document.addEventListener('mousemove', (e) => {
+    if (shown) return;
+    if (e.clientY < 10) { shown = true; showPrompt(); }
+  });
+  window.addEventListener('scroll', () => {
+    if (shown) return;
+    const scrolled = window.scrollY + window.innerHeight;
+    const doc = document.documentElement.scrollHeight;
+    if (scrolled > doc * 0.85) { shown = true; showPrompt(); }
+  });
+</script>
+
+

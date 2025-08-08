@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Solar Panel Types & Efficiency | Milton Keynes';
+const description = 'Mono vs Poly, efficiency, degradation, and what matters most for MK homes.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Solar Panel Types & Efficiency" subtitle="Mono vs Poly, efficiency, degradation, and what matters for MK homes" label="Panel types" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Solar Panel Types & Efficiency</h1>
+      <div class="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20">
+        <h2 class="text-lg font-lufga text-text-dark mb-2">TL;DR</h2>
+        <ul class="list-disc pl-6 text-neutral-800 space-y-1">
+          <li>Monocrystalline panels dominate due to higher efficiency.</li>
+          <li>Look for >20% efficiency and strong 25‑year warranties.</li>
+          <li>Choose reputable brands with UK support.</li>
+        </ul>
+      </div>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Panel technologies</h2>
+      <p class="text-neutral-700 mb-4">Monocrystalline (mono) panels offer higher efficiency and better space utilisation than polycrystalline. Modern half‑cut and multi‑busbar designs improve performance and shade tolerance.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-2">Degradation & warranties</h2>
+      <p class="text-neutral-700 mb-4">Expect ~0.45–0.55% annual degradation from reputable brands. Performance warranties typically guarantee ~84–87% output at year 25.</p>
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+      <RelatedLinks links={[
+        { href: '/costs', label: 'Costs & payback in Milton Keynes' },
+        { href: '/installation', label: 'Installation process' },
+        { href: '/grants', label: 'Grants & incentives' },
+        { href: '/faq/panel-lifespan', label: 'FAQ: How long do panels last?' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: How much do solar panels cost in MK?';
+const description = 'Typical costs for 3–6kW systems in Milton Keynes and what affects price.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much do solar panels cost in MK?',
+      acceptedAnswer: { '@type': 'Answer', text: 'As a guide: 3kW £5–6k, 4kW £6–8k, 5kW £8–9k, 6kW £9–11k in MK. Costs vary by roof access, brands, and extras like batteries.' },
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">How much do solar panels cost?</h1>
+      <p class="text-neutral-700">See the full breakdown on our Costs page, including typical system sizes and annual savings.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

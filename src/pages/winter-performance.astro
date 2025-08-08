@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Winter Performance | Solar Panels in Milton Keynes';
+const description = 'What to expect from solar panels in MK during winter and how to maximise output.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Winter Performance" subtitle="What to expect in MK and how to maximise output" label="Winter" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Winter Performance</h1>
+      <p class="text-neutral-700 mb-4">Solar output is lower in winter due to shorter days and lower sun angle, but systems still generate meaningfully. East/west arrays smooth production; batteries help capture daytime generation for evening use.</p>
+      <div class="mt-8"><AuthorBox /></div>
+      <RelatedLinks links={[
+        { href: '/orientation-shading', label: 'Orientation & shading' },
+        { href: '/battery-storage', label: 'Battery storage' },
+        { href: '/roi', label: 'ROI & payback' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+const title = 'Solar Installation Process | Milton Keynes';
+const description = 'Step-by-step solar panel installation process in Milton Keynes: survey, design, installation, and commissioning.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Emily Harris',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Our Solar Installation Process" subtitle="Survey, design, installation, and commissioning — what to expect in MK" label="Installation" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-6">Our Solar Installation Process</h1>
+      <div class="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20">
+        <h2 class="text-lg font-lufga text-text-dark mb-2">TL;DR</h2>
+        <ul class="list-disc pl-6 text-neutral-800 space-y-1">
+          <li>Remote survey → same‑day quote with layout and savings.</li>
+          <li>Site visit confirms design and electrics; date set.</li>
+          <li>One‑day install by MCS team; documents and apps provided.</li>
+        </ul>
+      </div>
+      <ol class="space-y-6 text-neutral-700">
+        <li>
+          <h2 class="text-xl font-lufga text-text-dark mb-1">1) Remote Survey</h2>
+          <p>We assess your roof via satellite imagery, estimate system size, and provide a same‑day quote with savings projection.</p>
+        </li>
+        <li>
+          <h2 class="text-xl font-lufga text-text-dark mb-1">2) Technical Site Visit</h2>
+          <p>We confirm roof condition, measure shading, review electrics, and finalise panel layout and inverter position.</p>
+        </li>
+        <li>
+          <h2 class="text-xl font-lufga text-text-dark mb-1">3) Installation Day</h2>
+          <p>MCS‑certified installers fit mounting, panels, inverter, and monitoring. Most homes are completed in one day.</p>
+        </li>
+        <li>
+          <h2 class="text-xl font-lufga text-text-dark mb-1">4) Commissioning & Handover</h2>
+          <p>System is tested, DNO notified, documents issued (MCS certificate, warranties), and apps configured.</p>
+        </li>
+      </ol>
+      <div class="mt-8">
+        <AuthorBox />
+      </div>
+      <RelatedLinks links={[
+        { href: '/costs', label: 'Solar costs and payback' },
+        { href: '/grants', label: 'Grants and incentives (ECO4, 0% VAT, SEG)' },
+        { href: '/calculator', label: 'Savings calculator' },
+        { href: '/faq/consumer-unit', label: 'FAQ: Do I need to upgrade my consumer unit?' },
+        { href: '/faq/dno-timeline', label: 'FAQ: How long do DNO approvals take?' },
+        { href: '/faq/mcs-paperwork', label: 'FAQ: What MCS paperwork do I get?' },
+        { href: '/faq/scaffolding', label: 'FAQ: Do you always need scaffolding?' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

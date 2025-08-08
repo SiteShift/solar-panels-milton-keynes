@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCollection, getEntry } from 'astro:content';
+import PageHero from '../../components/PageHero.astro';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('case-studies');
+  return studies.map((s) => ({ params: { slug: s.slug } }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry('case-studies', slug);
+if (!entry) throw new Error('Case study not found');
+
+const title = `${entry.data.title} | Case Study`;
+const description = entry.data.description;
+const reviewSchema = entry.data.review?.text
+  ? {
+      '@type': 'Review',
+      reviewBody: entry.data.review.text,
+      author: { '@type': 'Person', name: entry.data.review.author || 'Homeowner' },
+      reviewRating: entry.data.review.rating
+        ? { '@type': 'Rating', ratingValue: entry.data.review.rating, bestRating: 5 }
+        : undefined,
+    }
+  : undefined;
+const studySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: entry.data.title,
+  description,
+  datePublished: new Date(entry.data.installationDate).toISOString(),
+  author: { '@type': 'Organization', '@id': 'https://solarpanels-miltonkeynes.com/#organization' },
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+  review: reviewSchema,
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={studySchema}>
+  <PageHero title={entry.data.title} subtitle={`${entry.data.location} • ${entry.data.systemSize}`} label="Case study" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-2">{entry.data.title}</h1>
+      <p class="text-neutral-600 mb-4">{entry.data.location} • {entry.data.systemSize} • {new Date(entry.data.installationDate).toLocaleDateString('en-GB')}</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">System Details</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Panels: {entry.data.panelCount}</li>
+            <li>Inverter: {entry.data.inverterBrand}</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Results</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Monthly generation: {entry.data.results.monthlyGeneration} kWh</li>
+            <li>Annual savings: £{entry.data.results.annualSavings}</li>
+            <li>CO₂ reduction: {entry.data.results.co2Reduction} kg/year</li>
+            <li>Payback: {entry.data.results.paybackPeriod} years</li>
+          </ul>
+        </div>
+      </div>
+      {entry.data.images && entry.data.images.length > 0 && (
+        <div class="mt-6 grid sm:grid-cols-2 gap-4">
+          {entry.data.images.map((img: any) => (
+            <figure class="rounded-xl overflow-hidden border border-gray-200 bg-white">
+              <img src={img.src} alt={img.alt} class="w-full h-56 object-cover" loading="lazy" decoding="async" />
+              {img.caption && (<figcaption class="text-xs text-neutral-600 p-2">{img.caption}</figcaption>)}
+            </figure>
+          ))}
+        </div>
+      )}
+      <div class="mt-6">
+        <p class="text-neutral-700">{entry.data.review.text}</p>
+      </div>
+      <div class="mt-8">
+        <a href="/contact" class="inline-flex items-center gap-3 bg-gradient-to-b from-green-400 to-green-600 text-black rounded-full px-6 py-3 button-3d">Get a similar system quote</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PageHero from '../components/PageHero.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+
+const title = 'About | Solar Panels Milton Keynes';
+const description = 'About Milton Keynes Solar Panels — connecting locals with vetted MCS‑certified installers. Learn about our mission, expert author, and approach.';
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Milton Keynes Solar Panels',
+  url: 'https://solarpanels-miltonkeynes.com',
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={organizationSchema}>
+  <PageHero title="About Milton Keynes Solar Panels" subtitle="Local, MCS‑aligned guidance and vetted installers for MK homeowners" label="About us" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">About Milton Keynes Solar Panels</h1>
+      <p class="text-neutral-700 mb-6">We help MK homeowners get fast, fair quotes from vetted, MCS‑certified installers. Our goal is to make solar simple, transparent, and high‑quality.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mb-3">How we work</h2>
+      <ul class="list-disc pl-6 space-y-2 text-neutral-700 mb-6">
+        <li>Assess your needs and roof remotely</li>
+        <li>Match you with certified local installers</li>
+        <li>Help you compare options and grants</li>
+      </ul>
+      <AuthorBox author={{
+        name: 'Emily Harris',
+        title: 'MCS‑Certified Solar Assessor',
+        bio: 'Emily Harris is a Milton Keynes–based solar energy specialist with 8+ years of hands‑on experience advising homeowners on solar PV system design, battery storage sizing, and UK grant eligibility. Emily founded Milton Keynes Solar Panels to help local residents quickly connect with vetted, MCS‑certified installers who deliver high‑quality workmanship and reliable aftercare. She reviews every guide for technical accuracy, keeps pricing and grant information up to date, and champions transparent, data‑driven decisions so homeowners can confidently cut their energy bills and carbon footprint.',
+        image: '/profile-set-hero (1)_compressed.webp',
+        email: 'solarpanelsmiltonkeynes@gmail.com'
+      }} />
+    </div>
+  </section>
+</BaseLayout>
+
+

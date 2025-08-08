@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Do I need a battery in Milton Keynes?';
+const description = 'When a battery makes sense for MK homes: usage patterns, tariffs, and ROI considerations.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need a battery for my solar panels in MK?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Batteries are most valuable when you have evening usage and/or a time-of-use tariff. Many MK homes benefit from 5–10kWh; the right size depends on your daily profile.' },
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Do I need a battery?</h1>
+      <p class="text-neutral-700">Batteries store daytime solar for evening use. In MK, 5–10kWh often suits family homes. If your bills are higher in the evening, you’re likely to benefit.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

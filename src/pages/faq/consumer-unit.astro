@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Do I need to upgrade my consumer unit?';
+const description = 'When MK homes need consumer unit or isolator upgrades for solar PV, and what installers typically include.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Do I need to upgrade my consumer unit?', acceptedAnswer: { '@type': 'Answer', text: 'Often no. If your consumer unit has spare ways and RCD protection, it can be used. Installers typically fit an isolator and new circuit; older boards may need a modern replacement for safety/compliance.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Do I need to upgrade my consumer unit?</h1>
+      <p class="text-neutral-700">If your board has spare capacity and RCD protection, we can usually add a dedicated PV circuit and isolator. Very old boards (re-wirable fuses) are upgraded as part of the install for safety.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Do I need bird-proofing (pigeon mesh)?';
+const description = 'Preventing birds nesting under panels in Milton Keynes and when pigeon mesh is recommended.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Do I need bird-proofing?', acceptedAnswer: { '@type': 'Answer', text: 'If birds are common in your area, mesh prevents nesting under panels and reduces noise/debris. It can be fitted during install or retrofitted without panel damage.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Do I need bird-proofing (pigeon mesh)?</h1>
+      <p class="text-neutral-700">We recommend mesh where pigeons are active. It clips to panel frames (no drilling) and preserves warranties. Cleaning gutters first is a good idea.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

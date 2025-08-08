@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = 'Solar Savings Calculator | Milton Keynes';
+const description = 'Estimate annual savings, SEG earnings, and payback for solar panels in Milton Keynes. Fast, simple calculator.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Solar Savings Calculator</h1>
+      <p class="text-neutral-700 mb-6">Quickly estimate your potential savings and payback based on typical Milton Keynes conditions. Results are indicative; request a free quote for a tailored design.</p>
+
+      <div class="bg-white rounded-xl p-6 border border-gray-200">
+        <form id="calc-form" class="grid gap-4" onsubmit="event.preventDefault();">
+          <label class="block">
+            <span class="text-sm text-neutral-700">System size (kW)</span>
+            <input class="mt-1 w-full px-4 py-3 rounded-lg border border-gray-300" type="number" id="size" min="1" max="12" step="0.5" value="4" />
+          </label>
+          <label class="block">
+            <span class="text-sm text-neutral-700">Monthly electricity bill (£)</span>
+            <input class="mt-1 w-full px-4 py-3 rounded-lg border border-gray-300" type="number" id="bill" min="50" max="400" step="10" value="150" />
+          </label>
+          <label class="block">
+            <span class="text-sm text-neutral-700">Battery storage</span>
+            <select class="mt-1 w-full px-4 py-3 rounded-lg border border-gray-300" id="battery">
+              <option value="no" selected>No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm text-neutral-700">Roof orientation</span>
+            <select class="mt-1 w-full px-4 py-3 rounded-lg border border-gray-300" id="orientation">
+              <option value="1" selected>South (best)</option>
+              <option value="0.9">South‑East / South‑West</option>
+              <option value="0.8">East / West</option>
+              <option value="0.6">North‑East / North‑West</option>
+            </select>
+          </label>
+        </form>
+        <hr class="my-4" />
+        <div id="results" class="space-y-2 text-neutral-800">
+          <div class="flex justify-between"><span>Estimated annual generation</span><span id="gen" class="font-lufga">3,800 kWh</span></div>
+          <div class="flex justify-between"><span>Annual bill savings</span><span id="savings" class="font-lufga text-accent">£950</span></div>
+          <div class="flex justify-between"><span>SEG export earnings</span><span id="seg" class="font-lufga text-accent">£180</span></div>
+          <div class="flex justify-between"><span>Total annual benefit</span><span id="total" class="font-lufga text-accent text-xl">£1,130</span></div>
+          <div class="flex justify-between"><span>Estimated payback</span><span id="payback" class="font-lufga text-accent text-xl">~5.8 years</span></div>
+        </div>
+        <p class="text-xs text-neutral-500 mt-4">Assumptions: MK irradiance; 4kW ≈ 3,800kWh/year baseline, 30p/kWh import rate, 5.5p/kWh SEG export, linear scaling by size/orientation; self‑consumption 55% (no battery) / 75% (with battery). Actual results vary by usage and shading.</p>
+        <script is:inline>
+          const sizeEl = document.getElementById('size');
+          const billEl = document.getElementById('bill');
+          const batteryEl = document.getElementById('battery');
+          const orientationEl = document.getElementById('orientation');
+          const genEl = document.getElementById('gen');
+          const savingsEl = document.getElementById('savings');
+          const segEl = document.getElementById('seg');
+          const totalEl = document.getElementById('total');
+          const paybackEl = document.getElementById('payback');
+
+          function formatCurrency(n) { return '£' + n.toFixed(0); }
+          function formatKwh(n) { return n.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' kWh'; }
+
+          function recalc() {
+            const size = parseFloat(sizeEl.value) || 4;
+            const bill = parseFloat(billEl.value) || 150;
+            const hasBattery = batteryEl.value === 'yes';
+            const orient = parseFloat(orientationEl.value) || 1;
+
+            // Baseline generation: 4kW ≈ 3,800 kWh/year in MK
+            const basePerKw = 3800 / 4;
+            const gen = basePerKw * size * orient;
+
+            const importRate = 0.30; // £/kWh
+            const segRate = 0.055; // £/kWh
+            const selfUse = hasBattery ? 0.75 : 0.55;
+
+            const usedOnSite = gen * selfUse;
+            const exported = gen - usedOnSite;
+            const annualSavings = usedOnSite * importRate;
+            const annualSeg = exported * segRate;
+            const total = annualSavings + annualSeg;
+
+            // Rough system cost estimate
+            const costPerKw = 1350; // avg across sizes
+            const systemCost = Math.max(4200, Math.min(9800, size * costPerKw));
+            const paybackYears = systemCost / total;
+
+            genEl.textContent = formatKwh(gen);
+            savingsEl.textContent = formatCurrency(annualSavings);
+            segEl.textContent = formatCurrency(annualSeg);
+            totalEl.textContent = formatCurrency(total);
+            paybackEl.textContent = '~' + paybackYears.toFixed(1) + ' years';
+          }
+
+          [sizeEl, billEl, batteryEl, orientationEl].forEach((el) => el.addEventListener('input', recalc));
+          recalc();
+        </script>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = 'Editorial Policy | Milton Keynes Solar Panels';
+const description = 'Our standards for accuracy, sourcing, and updates across all solar guides for Milton Keynes.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Editorial Policy</h1>
+      <p class="text-neutral-700 mb-4">We publish accurate, practical guidance for Milton Keynes homeowners considering solar PV. Our content is written or reviewed by an experienced specialist and references credible sources.</p>
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">Sourcing</h2>
+      <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+        <li>Primary sources: Ofgem, MCS, GOV.UK, Milton Keynes Council</li>
+        <li>Technical datasheets and installer documentation</li>
+        <li>Local performance data and case studies</li>
+      </ul>
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">Accuracy & Updates</h2>
+      <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+        <li>We verify facts before publication and add a visible “last updated” date.</li>
+        <li>Policy changes (ECO4, SEG, VAT) trigger prompt content updates.</li>
+      </ul>
+      <h2 class="text-2xl font-lufga text-text-dark mt-6 mb-2">Conflicts & Independence</h2>
+      <p class="text-neutral-700">We may earn revenue by introducing homeowners to vetted installers. This does not influence factual recommendations; we aim for transparent, data‑driven guidance.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

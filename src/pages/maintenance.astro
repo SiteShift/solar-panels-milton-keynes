@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Maintenance & Monitoring | Milton Keynes Solar Panels';
+const description = 'Keep your system performing: inspections, monitoring, and when cleaning is worthwhile in MK.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Maintenance & Monitoring" subtitle="Keep your system performing — inspections, monitoring, and cleaning in MK" label="Maintenance" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Maintenance & Monitoring</h1>
+      <ul class="list-disc pl-6 text-neutral-700 space-y-2">
+        <li>Annual visual inspection of panels, mounting, and cabling.</li>
+        <li>Check inverter ventilation and error logs.</li>
+        <li>Use the monitoring app to track generation trends.</li>
+        <li>Cleaning is rarely needed in MK; consider if there’s heavy debris buildup.</li>
+      </ul>
+      <div class="mt-8"><AuthorBox /></div>
+      <RelatedLinks links={[
+        { href: '/common-problems', label: 'Common problems & fixes' },
+        { href: '/inverters', label: 'Inverters: String vs Micro' },
+        { href: '/seg', label: 'Smart Export Guarantee' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

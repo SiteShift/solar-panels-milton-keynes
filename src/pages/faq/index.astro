@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Solar FAQs | Milton Keynes';
+const description = 'Answers to common questions about solar panels, batteries, planning, costs, SEG and more in Milton Keynes.';
+// Use import.meta.glob instead of deprecated Astro.glob
+const modules = import.meta.glob('./*.astro', { eager: true });
+const faqPaths = Object.keys(modules)
+  .filter((p) => !p.endsWith('index.astro'))
+  .map((p) => ({
+    url: `/faq/${p.replace('./', '').replace('.astro', '')}`,
+    label: p
+      .replace('./', '')
+      .replace('.astro', '')
+      .replace(/-/g, ' '),
+  }));
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-lufga text-text-dark mb-6">Solar FAQs</h1>
+      <ul class="space-y-3">
+        {faqPaths.map((p) => (
+          <li>
+            <a href={p.url} class="text-accent hover:underline">{p.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+

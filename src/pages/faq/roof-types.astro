@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Can you install on my roof type?';
+const description = 'Pitched, slate, tile, and flat roofs in MK—what to expect for mounting and permissions.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Can you install on slate/tile/flat roofs?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. We use roof‑specific mounting systems for tile and slate, and low‑profile frames on flat roofs. A technical survey confirms fixings and load.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Can you install on my roof type?</h1>
+      <p class="text-neutral-700">We install on most pitched roofs and many flat roofs in MK using appropriate mounting solutions.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

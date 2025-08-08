@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Are east/west roofs good for solar?';
+const description = 'Performance of east/west roofs in Milton Keynes and when they outperform south in self-consumption.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Are east/west roofs good for solar?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. East/west spreads generation across morning and evening, often matching usage better and improving self-consumption. Annual yield typically ~85–95% of due-south.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Are east/west roofs good for solar?</h1>
+      <p class="text-neutral-700">East/west setups reduce peak clipping and can increase self-use. Pairing with a battery further smooths evening demand.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

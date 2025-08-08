@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Inverters: String vs Micro | Milton Keynes';
+const description = 'Understand inverter types, when to use optimisers, and how to choose for your MK home.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Inverters: String vs Micro" subtitle="When to use optimisers and how to choose for your MK home" label="Inverters" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Inverters: String vs Micro</h1>
+      <p class="text-neutral-700 mb-4">String inverters are cost‑effective and ideal for unshaded arrays. Microinverters or optimisers help where chimneys/trees cause partial shading or where panel‑level monitoring is desired.</p>
+      <div class="grid md:grid-cols-2 gap-6 mt-4">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">String Inverters</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Lower cost, simple design</li>
+            <li>Best for uniform irradiance</li>
+            <li>Single replacement cycle ~10–12 years typical</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Micro/Optimisers</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Better shade tolerance</li>
+            <li>Panel‑level monitoring</li>
+            <li>Higher upfront cost</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8"><AuthorBox /></div>
+      <RelatedLinks links={[
+        { href: '/installation', label: 'Installation process' },
+        { href: '/costs', label: 'Costs & payback' },
+        { href: '/common-problems', label: 'Common problems & fixes' },
+        { href: '/faq/microinverters-optimisers', label: 'FAQ: Microinverters vs optimisers' },
+        { href: '/faq/shading-fixes', label: 'FAQ: Shading fixes' },
+        { href: '/faq/inverter-noise', label: 'FAQ: Are inverters noisy?' },
+        { href: '/faq/three-phase', label: 'FAQ: Do I need 3‑phase?' },
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

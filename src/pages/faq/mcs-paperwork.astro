@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: What MCS paperwork do I get?';
+const description = 'Certificates and documents you receive after an MK solar installation (MCS, DNO, warranties).';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What MCS paperwork do I get?', acceptedAnswer: { '@type': 'Answer', text: 'You receive: MCS certificate, electrical installation certificate, DNO notification/approval, commissioning sheet, inverter/app details, and product/workmanship warranties.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">What MCS paperwork do I get?</h1>
+      <p class="text-neutral-700">You’ll get an MCS certificate, electrical cert, DNO notification, commissioning report, app login, and warranty documents for panels/inverter/workmanship.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

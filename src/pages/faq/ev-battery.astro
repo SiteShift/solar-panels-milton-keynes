@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = 'FAQ: Do EV owners benefit more from a battery?';
+const description = 'How EV charging pairs with home batteries in Milton Keynes to maximise self-consumption and off-peak rates.';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Do EV owners benefit more from a battery?', acceptedAnswer: { '@type': 'Answer', text: 'Often yes. You can charge the battery off-peak and top up your EV in the evening, or charge the EV directly during cheap-rate windows. Solar daytime surplus also helps.' } },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={faqSchema}>
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-3xl font-lufga text-text-dark mb-4">Do EV owners benefit more from a battery?</h1>
+      <p class="text-neutral-700">Yes, especially with time-of-use tariffs. Charge overnight cheaply and use stored energy for your EV and home in the evening; use solar surplus in summer.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+

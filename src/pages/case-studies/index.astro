@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getCollection } from 'astro:content';
+
+const title = 'Solar Case Studies | Milton Keynes';
+const description = 'Real Milton Keynes installations with system sizes, savings, and payback.';
+const studies = await getCollection('case-studies');
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero title="Local Solar Case Studies" subtitle="Real MK installs — sizes, savings, and payback" label="Case studies" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-6">Solar Case Studies</h1>
+      <div class="grid md:grid-cols-2 gap-6">
+        {studies.map((s) => (
+          <a href={`/case-studies/${s.slug}/`} class="block p-6 rounded-xl border border-gray-200 bg-white hover:border-accent/50 transition-colors">
+            <h2 class="text-xl font-lufga text-text-dark">{s.data.title}</h2>
+            <p class="text-neutral-700 text-sm mt-1">{s.data.description}</p>
+            <p class="text-neutral-500 text-sm mt-2">{s.data.location} • {s.data.systemSize} • {new Date(s.data.installationDate).toLocaleDateString('en-GB')}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

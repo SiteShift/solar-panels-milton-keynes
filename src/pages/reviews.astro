@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = 'Customer Reviews | Milton Keynes Solar Panels';
+const description = 'What local homeowners say about their solar installations. Real, verifiable reviews sourced with permission.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  description,
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={schema}>
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Customer Reviews</h1>
+      <p class="text-neutral-700 mb-6">We publish authentic feedback from homeowners in Milton Keynes. If you’d like your review featured here, please contact us. We only publish reviews we can verify and with the customer’s permission.</p>
+
+      <div class="p-6 rounded-xl border border-gray-200 bg-white">
+        <p class="text-sm text-neutral-600">Coming soon: we are collecting verified reviews and will publish them with screenshots and links where permitted. In the meantime, you’ll see trust stats and case study outcomes across our pages.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

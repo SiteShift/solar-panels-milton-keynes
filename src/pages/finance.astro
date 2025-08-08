@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Solar Finance Options | Milton Keynes';
+const description = 'How to think about financing solar in Milton Keynes: cash vs finance, APR impact on ROI, and practical next steps.';
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  dateModified: new Date().toISOString(),
+  author: { '@type': 'Person', name: 'Emily Harris' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={articleSchema}>
+  <PageHero title="Solar Finance Options in Milton Keynes" subtitle="Cash vs finance, ROI and payback considerations" label="Finance" overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h1 class="text-4xl font-lufga text-text-dark mb-4">Finance & ROI</h1>
+      <p class="text-neutral-700 mb-6">Finance can make sense where savings offset repayments. Always compare APR, term length, and total cost of credit against your estimated annual benefit (bill savings + SEG). We do not provide financial advice; seek an FCA‑authorised lender where appropriate.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Cash purchase</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Highest net ROI; no interest</li>
+            <li>Typical MK payback ~8–12 years depending on usage</li>
+            <li>Pair with 0% VAT and SEG for faster returns</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Financed purchase</h2>
+          <ul class="list-disc pl-6 text-neutral-700 space-y-1">
+            <li>Monthly repayments vs. monthly savings</li>
+            <li>APR and term materially affect payback</li>
+            <li>Check early repayment and total cost</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 p-6 rounded-xl border border-gray-200 bg-white">
+        <h2 class="text-xl font-lufga text-text-dark mb-2">What to do next</h2>
+        <ol class="list-decimal pl-6 text-neutral-700 space-y-1">
+          <li>Estimate your annual benefit on our <a class="text-accent hover:underline" href="/calculator">calculator</a>.</li>
+          <li>Compare savings vs. any indicative repayments.</li>
+          <li>Request a tailored quote; we’ll provide a detailed design and assumptions.</li>
+        </ol>
+      </div>
+
+      <div class="mt-8 text-sm text-neutral-600">4.9★ from MK homeowners — <a href="/reviews" class="text-accent hover:underline">see reviews</a></div>
+      <div class="mt-6"><AuthorBox /></div>
+      <RelatedLinks links={[
+        { href: '/costs', label: 'Costs & payback in Milton Keynes' },
+        { href: '/roi', label: 'ROI & payback' },
+        { href: '/grants', label: 'Grants & incentives (ECO4, 0% VAT, SEG)' }
+      ]} />
+    </div>
+  </section>
+</BaseLayout>
+
+

@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import towns from '../../../data/towns.json';
+import blurbs from '../../../data/town-blurbs.json';
+import nearby from '../../../data/town-nearby.json';
+import RoofTiltDiagram from '../../../components/RoofTiltDiagram.astro';
+import caseStudies from '../../../data/town-case-studies.json';
+import PageHero from '../../../components/PageHero.astro';
+
+export function getStaticPaths() {
+  return towns.map((t) => ({ params: { town: t.slug } }));
+}
+
+const { town } = Astro.params;
+const townData = towns.find((t) => t.slug === town);
+
+if (!townData) {
+  throw new Error('Town not found');
+}
+
+const title = `${townData.name} Solar Panels | Milton Keynes`;
+const nearbyList = (nearby[townData.slug] || []).slice(0, 2).map((slug) => towns.find((t) => t.slug === slug)?.name).filter(Boolean).join(', ');
+const description = `Solar panels in ${townData.name}: 4kW ~${townData.solarData?.estimatedGeneration4kWkWhYr ?? 3800} kWh/yr, ${townData.solarData?.optimalTiltDeg ?? '30–40°'} tilt. Nearby: ${nearbyList}. 0% VAT to 2027, ECO4 & SEG available.`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Solar Panel Installation',
+  areaServed: { '@type': 'Place', name: townData.name },
+  provider: { '@type': 'Organization', name: 'Milton Keynes Solar Panels' },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={[serviceSchema]}>
+  <PageHero title={`Solar Panels in ${townData.name}`} subtitle="Local design, MCS installers, MK‑optimised systems" label={townData.name} overlay={true} overlayStyle="dark" textLight={true} />
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs />
+      <h2 class="text-3xl font-lufga text-text-dark mb-3">Solar Panels in {townData.name}</h2>
+      <p class="text-neutral-700 mb-6">Thinking about solar in {townData.name}? Explore typical costs, savings, and available grants for the Milton Keynes area. We’ll connect you with vetted, MCS‑certified installers.</p>
+      {blurbs[townData.slug] && (
+        <div class="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20">
+          <p class="text-neutral-800">{blurbs[townData.slug]}</p>
+        </div>
+      )}
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Typical Costs & Payback</h2>
+          <ul class="text-neutral-700 list-disc pl-6 space-y-1">
+            <li>4kW system: ~£6,000–£8,000 (0% VAT until 2027)</li>
+            <li>Annual savings: £600–£800 (up to ~£1,085 with high usage)</li>
+            <li>Payback: ~8–12 years depending on usage and tariff</li>
+          </ul>
+          <a class="inline-block mt-3 text-accent hover:underline" href="/costs">View Milton Keynes cost guide →</a>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Grants & Incentives</h2>
+          <ul class="text-neutral-700 list-disc pl-6 space-y-1">
+            <li>ECO4: up to 100% for eligible homes (EPC D or below, income criteria)</li>
+            <li>0% VAT on domestic solar and batteries until April 2027</li>
+            <li>SEG export payments: typically 1–6p/kWh (supplier dependent)</li>
+          </ul>
+          <a class="inline-block mt-3 text-accent hover:underline" href="/grants">Explore grants →</a>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">{townData.name} at a glance</h2>
+          <ul class="text-neutral-700 list-disc pl-6 space-y-1">
+            <li>Estimated 4kW generation (MK avg): ~{townData.solarData?.estimatedGeneration4kWkWhYr ?? 3800} kWh/year</li>
+            <li>Average household generation: ~{townData.solarData?.averageHouseholdGenerationKWhYr ?? 4751} kWh/year</li>
+            <li>Optimal tilt: {townData.solarData?.optimalTiltDeg ?? '30–40°'} • Orientation: {townData.solarData?.optimalOrientation ?? 'South (E/W strong)'} </li>
+            <li>Most installs complete in 1 day by MCS team</li>
+          </ul>
+          <div class="mt-4">
+            <RoofTiltDiagram label={`${townData.name}`} />
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 prose prose-neutral max-w-none">
+        <h2 class="text-2xl font-lufga text-text-dark not-prose mb-3">Solar in {townData.name}: what to expect</h2>
+        <p class="text-neutral-700">{blurbs[townData.slug] || `Homes in ${townData.name} generally suit straightforward pitched‑roof installs. Most properties achieve a ${townData.solarData?.optimalTiltDeg ?? '30–40°'} effective tilt and dependable annual generation in MK’s climate.`}</p>
+        <p class="text-neutral-700">Milton Keynes enjoys ~1,478 sunshine hours per year and benefits from planned, low‑rise streetscapes that reduce shading. A well‑sited {townData.solarData?.estimatedGeneration4kWkWhYr ?? 3800} kWh/year 4kW array is typical, with ECO4 grants for eligible homes, 0% VAT on domestic solar and batteries until April 2027, and SEG export payments available from major suppliers.</p>
+        <p class="text-neutral-700">In {townData.name}, east/west roofs often deliver excellent self‑consumption for families with morning and evening usage. South‑facing at {townData.solarData?.optimalTiltDeg ?? '30–40°'} tilt remains optimal for headline yield. If you have chimneys or trees nearby, consider <a class="text-accent hover:underline" href="/inverters">optimisers or microinverters</a> to mitigate partial shade.</p>
+        <h3 class="text-xl font-lufga text-text-dark not-prose mt-6 mb-2">Local factors that influence design</h3>
+        <ul class="list-disc pl-6 text-neutral-700">
+          <li>Roof orientation and access on your street in {townData.name} (south ideal; east/west still excellent)</li>
+          <li>Chimneys/trees creating partial shade — consider optimisers where beneficial</li>
+          <li>Inverter position near the consumer unit for tidy cable runs</li>
+          <li>Flat roofs: low‑profile mounting to balance output and wind loading</li>
+        </ul>
+        <h3 class="text-xl font-lufga text-text-dark not-prose mt-6 mb-2">Costs, ROI and tariffs</h3>
+        <p class="text-neutral-700">Typical installed prices in MK are competitive; see our <a class="text-accent hover:underline" href="/costs">Costs & Payback</a> guide for size‑by‑size pricing and assumptions. Your payback depends on usage, import tariff, and the export rate under <a class="text-accent hover:underline" href="/seg">SEG</a>. Time‑of‑use tariffs pair well with <a class="text-accent hover:underline" href="/battery-storage">battery storage</a> to shift cheap night energy into peak hours.</p>
+        <h3 class="text-xl font-lufga text-text-dark not-prose mt-6 mb-2">Planning, regs and paperwork</h3>
+        <p class="text-neutral-700">Most installs in {townData.name} are permitted development; check edge cases and Building Regulations on our <a class="text-accent hover:underline" href="/planning-permission">planning page</a>. After installation, you’ll receive MCS and electrical certificates, plus DNO notification and warranties — see <a class="text-accent hover:underline" href="/faq/mcs-paperwork">MCS paperwork FAQ</a>.</p>
+        <h3 class="text-xl font-lufga text-text-dark not-prose mt-6 mb-2">What to do next</h3>
+        <p class="text-neutral-700">Review current <a class="text-accent hover:underline" href="/export-tariffs">export tariffs</a>, compare <a class="text-accent hover:underline" href="/panel-brands">panel brands</a>, and explore our <a class="text-accent hover:underline" href="/case-studies/">local case studies</a>. When ready, request a <a class="text-accent hover:underline" href="/contact">free local quote</a> and we’ll prepare a design tailored to your roof in {townData.name}.</p>
+        <h3 class="text-xl font-lufga text-text-dark not-prose mt-6 mb-2">What’s included with an MCS installation</h3>
+        <ul class="list-disc pl-6 text-neutral-700">
+          <li>Design pack with expected yield and layout</li>
+          <li>Supply and fit: panels, mounting, inverter, monitoring app</li>
+          <li>Commissioning, DNO notification, MCS certificate and warranties</li>
+        </ul>
+        <p class="text-neutral-700 mt-4">Close to {nearbyList || 'other MK areas'}, we often cross‑reference recent installs to recommend panel brands, inverter choice, and battery sizing suited to properties like yours.</p>
+      </div>
+
+      {caseStudies[townData.slug] && (
+        <div class="mt-8 p-6 rounded-xl border border-gray-200 bg-white">
+          <h2 class="text-xl font-lufga text-text-dark mb-2">Illustrative local case study</h2>
+          <p class="text-xs text-neutral-500 mb-3">This is a representative example for guidance. Your property will differ; we’ll provide a tailored design and quote.</p>
+          <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-neutral-700">
+            <div><dt class="font-semibold">Project</dt><dd>{caseStudies[townData.slug].title}</dd></div>
+            <div><dt class="font-semibold">Property</dt><dd>{caseStudies[townData.slug].propertyType}</dd></div>
+            <div><dt class="font-semibold">System</dt><dd>{caseStudies[townData.slug].systemSizeKw} kW • {caseStudies[townData.slug].panels.count} panels ({caseStudies[townData.slug].panels.model})</dd></div>
+            <div><dt class="font-semibold">Inverter/Battery</dt><dd>{caseStudies[townData.slug].inverter}{caseStudies[townData.slug].batteryKwh ? ` • ${caseStudies[townData.slug].batteryKwh} kWh` : ''}</dd></div>
+            <div><dt class="font-semibold">Annual generation</dt><dd>~{caseStudies[townData.slug].annualGenerationKwh} kWh</dd></div>
+            <div><dt class="font-semibold">Bills</dt><dd>£{caseStudies[townData.slug].billBefore} → £{caseStudies[townData.slug].billAfter} (est.)</dd></div>
+            <div><dt class="font-semibold">Annual benefit</dt><dd>Savings £{caseStudies[townData.slug].savingsYear} + SEG £{caseStudies[townData.slug].segEarningsYear}</dd></div>
+            <div><dt class="font-semibold">Indicative payback</dt><dd>~{caseStudies[townData.slug].paybackYears} years</dd></div>
+          </dl>
+          <p class="text-neutral-600 mt-3 text-sm">Notes: {caseStudies[townData.slug].notes}</p>
+        </div>
+      )}
+
+      <div class="mt-8 p-6 rounded-xl border border-gray-200 bg-white">
+        <h2 class="text-xl font-lufga text-text-dark mb-2">Get a Free Local Quote</h2>
+        <p class="text-neutral-700 mb-3">Tell us a bit about your property in {townData.name} and we’ll match you with an MCS‑certified installer.</p>
+        <a class="inline-flex items-center gap-3 bg-gradient-to-b from-green-400 to-green-600 text-black rounded-full px-6 py-3 button-3d" href="/contact" data-cta="true" data-town={townData.slug}>Get Free Quote</a>
+      </div>
+
+      <div class="mt-8 p-6 rounded-xl border border-gray-200 bg-white">
+        <h2 class="text-xl font-lufga text-text-dark mb-2">Useful links</h2>
+        <ul class="list-disc pl-6 space-y-1 text-neutral-700">
+          <li><a href="/costs" class="text-accent hover:underline">Solar panel costs in Milton Keynes</a></li>
+          <li><a href="/grants" class="text-accent hover:underline">Solar grants and incentives (ECO4, 0% VAT, SEG)</a></li>
+          <li><a href="/installation" class="text-accent hover:underline">Installation process and what to expect</a></li>
+          <li><a href="/calculator" class="text-accent hover:underline">Solar savings calculator</a></li>
+          <li><a href="/roi" class="text-accent hover:underline">Payback and ROI in Milton Keynes</a></li>
+          <li><a href="/orientation-shading" class="text-accent hover:underline">Orientation, shading and tilt guidance</a></li>
+          <li><a href="/faq/tariffs" class="text-accent hover:underline">FAQ: Which tariffs work with solar?</a></li>
+          <li><a href="/faq/smart-meter-export" class="text-accent hover:underline">FAQ: Smart meter for SEG/export</a></li>
+          <li><a href="/faq/dno-export-limits" class="text-accent hover:underline">FAQ: DNO/export limits</a></li>
+          <li><a href="/case-studies/" class="text-accent hover:underline">Local case studies</a></li>
+        </ul>
+      </div>
+
+      <div class="mt-8 text-sm text-neutral-600">
+        <p class="mb-2">Nearby areas:</p>
+        <div class="flex flex-wrap gap-2">
+          {(nearby[townData.slug] || []).map((slug) => {
+            const name = towns.find((t) => t.slug === slug)?.name || slug;
+            return <a class="px-3 py-1 rounded-full border border-gray-200 bg-white text-neutral-700 hover:border-accent/60" href={`/milton-keynes/${slug}/solar-panels/`}>{name}</a>;
+          })}
+          <a class="px-3 py-1 rounded-full border border-gray-200 bg-white text-neutral-700 hover:border-accent/60" href="/milton-keynes/">See all</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+
